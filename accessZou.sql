@@ -64,3 +64,59 @@ CREATE TABLE studentRecords(
 	acadmenicAdvisingProfileUpdate bit NOT NULL DEFAULT '0',
 	FOREIGN KEY (requestID) REFERENCES AccessZou.request(requestID)
 	);
+
+--Create Admissions table
+CREATE TABLE admissions(
+	requestID BIGINT PRIMARY KEY,
+	act bit NOT NULL DEFAULT '0',
+	sat bit NOT NULL DEFAULT '0',
+	gre bit NOT NULL DEFAULT '0',
+	gmat bit NOT NULL DEFAULT '0',
+	tofel bit NOT NULL DEFAULT '0',
+	ielts bit NOT NULL DEFAULT '0',
+	lsat bit NOT NULL DEFAULT '0',
+	mcat bit NOT NULL DEFAULT '0',
+	ap bit NOT NULL DEFAULT '0',
+	clep bit NOT NULL DEFAULT '0',
+	ged bit NOT NULL DEFAULT '0',
+	millers bit NOT NULL DEFAULT '0',
+	prax bit NOT NULL DEFAULT '0',
+	plamu bit NOT NULL DEFAULT '0',
+	base bit NOT NULL DEFAULT '0',
+	FOREIGN KEY (requestID) REFERENCES AccessZou.request(requestID)
+	);
+
+--Create Reserved table
+CREATE TABLE reserved(
+	requestID BIGINT PRIMARY KEY,
+	immunizationView bit NOT NULL DEFAULT '0',
+	immunizationUpdate bit NOT NULL DEFAULT '0',
+	transferCreditAdmissionView bit NOT NULL DEFAULT '0',
+	transferCreditAdmissionUpdate bit NOT NULL DEFAULT '0',
+	relationshipsView bit NOT NULL DEFAULT '0',
+	relationshipsUpdate bit NOT NULL DEFAULT '0',
+	studentGroupsView bit NOT NULL DEFAULT '0',
+	studentGroupsUpdate bit NOT NULL DEFAULT '0',
+	accommodateSHealthUpdate bit NOT NULL DEFAULT '0',
+	supportStaffView bit NOT NULL DEFAULT '0',
+	supportStaffUpdate bit NOT NULL DEFAULT '0',
+	advanceStandingReportView bit NOT NULL DEFAULT '0',
+	advanceStandingReportUpdate bit NOT NULL DEFAULT '0',
+	FOREIGN KEY (requestID) REFERENCES AccessZou.request(requestID)
+	);
+
+--Create Student Financial Cashier Table
+CREATE TABLE studentFinancialCashier(
+	requestID BIGINT PRIMARY KEY,
+	generalInquiryView bit NOT NULL DEFAULT '0',
+	cashGroupPostView bit NOT NULL DEFAULT '0',
+	cashGroupPostUpdate bit NOT NULL DEFAULT '0',
+	FOREIGN KEY (requestID) REFERENCES AccessZou.request(requestID)
+	);
+
+--Create Student Financial Aid table
+CREATE TABLE studentFinancialAid(
+	cashView bit NOT NULL DEFAULT '0',
+	nonFinancialAidStaff bit NOT NULL DEFAULT '0',
+	FOREIGN KEY (requestID) REFERENCES AccessZou.request(requestID)
+	);
