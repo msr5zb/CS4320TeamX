@@ -1,3 +1,6 @@
 * text=auto
+<<<<<<< HEAD
 *.css linguist-vendored
 *.less linguist-vendored
+=======
+>>>>>>> master

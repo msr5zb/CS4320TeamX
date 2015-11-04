@@ -14,11 +14,14 @@
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+<<<<<<< HEAD
     <filter>
         <whitelist>
             <directory suffix=".php">app/</directory>
         </whitelist>
     </filter>
+=======
+>>>>>>> master
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>

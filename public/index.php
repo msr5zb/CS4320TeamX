@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -47,10 +50,17 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 |
 */
 
+<<<<<<< HEAD
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
+=======
+$kernel = $app->make('Illuminate\Contracts\Http\Kernel');
+
+$response = $kernel->handle(
+	$request = Illuminate\Http\Request::capture()
+>>>>>>> master
 );
 
 $response->send();
