@@ -116,6 +116,7 @@ CREATE TABLE studentFinancialCashier(
 
 --Create Student Financial Aid table
 CREATE TABLE studentFinancialAid(
+	requestID BIGINT PRIMARY KEY,	
 	cashView bit NOT NULL DEFAULT '0',
 	nonFinancialAidStaff bit NOT NULL DEFAULT '0',
 	FOREIGN KEY (requestID) REFERENCES AccessZou.request(requestID)
