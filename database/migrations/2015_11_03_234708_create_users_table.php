@@ -25,6 +25,77 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+            array(
+            'userSSO' => 'drrkvf',
+            'fname' => 'Dustin',
+            'lname' => 'Rios',
+            'title' => 'Cheif Database Bro',
+            'address' => '303 Foxfire Drive',
+            'ferpaScore' => 10,
+            'employeeId' => 124123,
+            )
+        );
+        DB::table('users')->insert(
+         array(
+            'userSSO' => 'kgh458',
+            'fname' => 'Karolina',
+            'lname' => 'Hryszko',
+            'title' => 'Ms.',
+            'address' => '98 East Avenue',
+            'ferpaScore' => 69,
+            'employeeId' => 282828,
+        )  
+        );        
+
+        DB::table('users')->insert(
+         array(
+            'userSSO' => 'mjk8v2',
+            'fname' => 'Mikey',
+            'lname' => 'Wikey',
+            'title' => 'What?',
+            'address' => '123 Columbia Street',
+            'ferpaScore' => 43,
+            'employeeId' => 234252,
+        )  
+        );
+
+        DB::table('users')->insert(
+         array(
+            'userSSO' => 'wdmpp5',
+            'fname' => 'William',
+            'lname' => 'Minerd',
+            'title' => 'Slacker',
+            'address' => '763 Road',
+            'ferpaScore' => 97,
+            'employeeId' => 827423,
+        )  
+        );
+
+        DB::table('users')->insert(
+         array(
+            'userSSO' => 'msr5zb',
+            'fname' => 'Michael',
+            'lname' => 'Rallo',
+            'title' => 'Hacker',
+            'address' => '762 Road',
+            'ferpaScore' => 01,
+            'employeeId' => 827371,
+        )  
+        ); 
+
+        DB::table('users')->insert(
+         array(
+            'userSSO' => 'jkdt2',
+            'fname' => 'Jayanth',
+            'lname' => 'I Cant Spell It',
+            'title' => 'Head Programmer of Stuff',
+            'address' => '761 Road',
+            'ferpaScore' => 00,
+            'employeeId' => 918242,
+        )  
+        );                              
     }
 
     /**
