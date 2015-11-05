@@ -6,6 +6,8 @@
     
 </head>
 <body>
-  <h1>Dummy Page</h1>  
+	<?php
+		echo "<h1>Dummy Page</h1>\n";
+	?>
 </body>
 </html>
