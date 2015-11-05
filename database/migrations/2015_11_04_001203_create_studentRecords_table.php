@@ -12,6 +12,7 @@ class CreateStudentRecordsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('studentRecords');
         Schema::create('studentRecords', function (Blueprint $table) {
             $table->integer('requestId')->unsigned();
             $table->boolean('basicInquiryView');
