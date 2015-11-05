@@ -12,6 +12,7 @@ class CreateRequestTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('request');
         Schema::create('request', function (Blueprint $table) {
             $table->increments('requestId');
             $table->string('userSSO', 6);

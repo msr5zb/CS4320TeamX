@@ -12,6 +12,7 @@ class CreateAcademicCareersTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('academicCareers');
         Schema::create('academicCareers', function (Blueprint $table) {
             $table->integer('requestId')->unsigned();
             $table->boolean('ugrd');

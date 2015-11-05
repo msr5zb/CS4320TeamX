@@ -12,6 +12,7 @@ class CreateAdmissionsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('admissions');
         Schema::create('admissions', function (Blueprint $table) {
             $table->integer('requestId')->unsigned();
             $table->boolean('act');

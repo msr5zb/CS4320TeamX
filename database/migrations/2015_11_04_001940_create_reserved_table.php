@@ -12,6 +12,7 @@ class CreateReservedTable extends Migration
      */
     public function up()
     {
+          Schema::dropIfExists('reserved');
         Schema::create('reserved', function (Blueprint $table) {
             $table->integer('requestId')->unsigned();
             $table->boolean('immunizationView');
