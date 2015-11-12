@@ -19,6 +19,8 @@ class CreateRequestTable extends Migration
             $table->string('requestDescription', 100);
             $table->string('pathHash', 50);
             $table->foreign('userSSO')->references('userSSO')->on('users');
+            $table->index('userSSO');
+            $table->index(['userSSO','requestId']);
         });
     }
 
