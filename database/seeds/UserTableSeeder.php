@@ -7,7 +7,6 @@ class UserTableSeeder extends Seeder {
     public function run() {
 
       DB::table('users')->delete();
-
       User::create( [
           'userSSO' => 'drrkvf',
           'fname' => 'Dustin',
