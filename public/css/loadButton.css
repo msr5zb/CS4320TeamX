@@ -1,0 +1,44 @@
+#loader {
+    display: none;
+    background-color: whitesmoke;
+    margin-left: 150px;
+}
+
+/* Borrowed your format & Tweeked it - Turned out pretty sweet */
+.loadNode {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border-radius: 100%;
+    transition: background-color .4s;
+}
+.loadNode:nth-of-type(1) {
+    margin-left: 40px;
+}
+.loadNode:nth-of-type(2) {
+    margin-left: 20px;
+    margin-top: -20px;
+}
+.loadNode:nth-of-type(3) {
+
+}
+        
+.loadNode:nth-of-type(4) {
+}
+        
+.loadNode:nth-of-type(5) {
+  margin-left: 20px;  
+}
+        
+.loadNode:nth-of-type(6) {
+    margin-left: 40px;
+    margin-top: -20px;
+}
+.loadNode:nth-of-type(7) {
+    margin-left: 60px;
+    margin-top: -40px;
+}
+.loadNode:nth-of-type(8) {
+    margin-left: 60px;
+    margin-top: -40px;
+}
