@@ -15,11 +15,11 @@ class CreateAcademicCareersTable extends Migration
         Schema::dropIfExists('academicCareers');
         Schema::create('academicCareers', function (Blueprint $table) {
             $table->integer('requestId')->unsigned();
-            $table->boolean('ugrd');
-            $table->boolean('grad');
-            $table->boolean('med');
-            $table->boolean('vetMed');
-            $table->boolean('law');
+            $table->boolean('ugrd')->default(0);
+            $table->boolean('grad')->default(0);
+            $table->boolean('med')->default(0);
+            $table->boolean('vetMed')->default(0);
+            $table->boolean('law')->default(0);
             $table->foreign('requestId')->references('requestId')->on('request');
             $table->primary('requestId');
         });
