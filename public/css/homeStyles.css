@@ -1,0 +1,16 @@
+body{
+    background-image: url("../images/tiger.jpeg");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-attachment: fixed;
+    background-size: 40% 60%;
+    
+}
+
+.panel-body{
+
+    background-color: gold;
+
+}
+
+
