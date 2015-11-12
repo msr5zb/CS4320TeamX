@@ -8,7 +8,11 @@
 				<div class="panel-heading">Home</div>
 
 				<div class="panel-body">
-					You are logged in!
+					{!! Form::open(array('url' => '/testScore', 'method' => 'get')) !!}
+						<div class="form-group">
+							{!! Form::submit('Create Access Application', ['class' => 'btn btn-primary form-control']) !!}
+						</div>
+					{!! Form::close() !!}
 				</div>
 			</div>
 		</div>

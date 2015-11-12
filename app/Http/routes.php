@@ -14,6 +14,8 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
+//Route::post('home', 'HomeController@start');
+Route::get('testScore', 'AccessTypeController@testScore');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
