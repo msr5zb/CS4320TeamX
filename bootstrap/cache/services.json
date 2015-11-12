@@ -2,7 +2,6 @@
     "providers": [
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "Illuminate\\Auth\\AuthServiceProvider",
-        "Illuminate\\Broadcasting\\BroadcastServiceProvider",
         "Illuminate\\Bus\\BusServiceProvider",
         "Illuminate\\Cache\\CacheServiceProvider",
         "Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider",
@@ -24,7 +23,8 @@
         "Illuminate\\Validation\\ValidationServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
         "App\\Providers\\AppServiceProvider",
-        "App\\Providers\\AuthServiceProvider",
+        "App\\Providers\\BusServiceProvider",
+        "App\\Providers\\ConfigServiceProvider",
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider"
     ],
@@ -41,7 +41,8 @@
         "Illuminate\\Validation\\ValidationServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
         "App\\Providers\\AppServiceProvider",
-        "App\\Providers\\AuthServiceProvider",
+        "App\\Providers\\BusServiceProvider",
+        "App\\Providers\\ConfigServiceProvider",
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider"
     ],
@@ -75,9 +76,6 @@
         "command.up": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.vendor.publish": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.view.clear": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
-        "Illuminate\\Broadcasting\\BroadcastManager": "Illuminate\\Broadcasting\\BroadcastServiceProvider",
-        "Illuminate\\Contracts\\Broadcasting\\Factory": "Illuminate\\Broadcasting\\BroadcastServiceProvider",
-        "Illuminate\\Contracts\\Broadcasting\\Broadcaster": "Illuminate\\Broadcasting\\BroadcastServiceProvider",
         "Illuminate\\Bus\\Dispatcher": "Illuminate\\Bus\\BusServiceProvider",
         "Illuminate\\Contracts\\Bus\\Dispatcher": "Illuminate\\Bus\\BusServiceProvider",
         "Illuminate\\Contracts\\Bus\\QueueingDispatcher": "Illuminate\\Bus\\BusServiceProvider",
@@ -133,7 +131,6 @@
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [],
-        "Illuminate\\Broadcasting\\BroadcastServiceProvider": [],
         "Illuminate\\Bus\\BusServiceProvider": [],
         "Illuminate\\Cache\\CacheServiceProvider": [],
         "Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider": [],
