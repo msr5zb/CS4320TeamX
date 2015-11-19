@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a3f463f083980226bed9e7dbe3d346c0",
-    "content-hash": "8042ae8164ad9e8cf0dd35a3e3fea07f",
+    "hash": "0c901f5b6f9b49d3fbc89d21817e14d9",
+    "content-hash": "f4a04b01b6f01879ce14e80586916af9",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -310,6 +310,47 @@
                 "password"
             ],
             "time": "2014-11-20 16:49:30"
+        },
+        {
+            "name": "jakoch/phantomjs-installer",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jakoch/phantomjs-installer.git",
+                "reference": "42b85cc0680b56c6ebeb5ced842d547cfd7c616a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/42b85cc0680b56c6ebeb5ced842d547cfd7c616a",
+                "reference": "42b85cc0680b56c6ebeb5ced842d547cfd7c616a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*"
+            },
+            "type": "custom-installer",
+            "autoload": {
+                "psr-0": {
+                    "PhantomInstaller\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jens-André Koch",
+                    "email": "jakoch@web.de"
+                }
+            ],
+            "description": "A Composer package which installs the PhantomJS binary (Linux, Windows, Mac) into `/bin` of your project.",
+            "keywords": [
+                "binaries",
+                "headless",
+                "phantomjs"
+            ],
+            "time": "2015-03-08 12:51:25"
         },
         {
             "name": "jakub-onderka/php-console-color",
