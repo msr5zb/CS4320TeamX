@@ -24,10 +24,13 @@
 <div class="container">
   <h2>Security Request Form</h2>
   <p><strong>* indicates required field</strong></p>
+  
+<!-- PROGRESS BAR TO IMPLEMENT LATER
   <div class="progress">
     <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
     </div>
   </div>
+-->
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -287,7 +290,7 @@
       <div id="admiss" class="panel-collapse collapse" style="padding:25px">
         <p style="padding-bottom:10px">* Check which test(s) access is to be granted. Please check all that apply.
           <label class="checkbox-inline"style="padding-left:250px">
-            <input type="checkbox" value=""><strong>ALL</strong>
+            <input type="checkbox" id="selectall" value=""><strong>ALL</strong>
           </label>
         </p>
           <form role="form" style="padding-bottom:10px" style="padding:10px">
@@ -481,13 +484,15 @@
 </div>
 
 <script>
-$('.btn btn-cont').on('click',function(e){
-
-    if($(this).parents('.panel').children('.panel-collapse').hasClass('in')){
-        e.preventDefault();
-        e.stopPropagation();
+//for select ALL button
+$('#selectall').change(function () {
+    if ($(this).prop('checked')) {
+        $('input').prop('checked', true);
+    } else {
+        $('input').prop('checked', false);
     }
 });
+$('#selectall').trigger('change');
 
 //continue button 1 (Basic Info -> Request Info)
 $(".cont1").on("click", function() {
@@ -570,7 +575,14 @@ $(".cont9").on("click", function() {
   $("#auth").collapse('show');
 });
 
+//close other panels when opening new one - for user simplicity
+$('.panel-heading a').on('click',function(e){
 
+    if($(this).parents('.panel').children('.panel-collapse').hasClass('in')){
+        e.preventDefault();
+        e.stopPropagation();
+    }
+});
 </script>
 
 
