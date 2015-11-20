@@ -17,6 +17,8 @@ Route::get('home', 'HomeController@index');
 //Route::post('home', 'HomeController@start');
 Route::get('testScore', 'AccessTypeController@testScore');
 
+Route::get( 'karaform', 'FormController@index' );
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
