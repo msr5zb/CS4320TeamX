@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class FormController extends Controller {
 
+	//constructor for FormController
+	public function __construct()
+	{
+		$this->middleware( 'auth' );
+	}
+	
 	/**
 	 * Display a listing of the resource.
 	 *
