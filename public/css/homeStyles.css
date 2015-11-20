@@ -7,10 +7,8 @@ body{
     
 }
 
-.panel-body{
-
-    background-color: gold;
-
+.score {
+	/*margin-left: 264px;*/
+	font-weight: bold !important;
+	
 }
-
-
