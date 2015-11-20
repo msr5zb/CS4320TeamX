@@ -20,31 +20,30 @@
 <body>
 
 
+  <div class="container">
+    <h2>Security Request Form</h2>
+    <p><strong>* indicates required field</strong></p>
 
-<div class="container">
-  <h2>Security Request Form</h2>
-  <p><strong>* indicates required field</strong></p>
 
-
-  <h4>Basic Information</h4>
-  <div id="basicinfo" style="padding:10px">
-    <form class="form-inline" role="form">
-      <div class="form-group">
-        <label for="usr">* Name:</label>
-        <input type="text" class="form-control" id="usr" style="padding-right:25px">
-      </div>
-      <div class="form-group">
-        <label for="pwprt">* PawPrint/SSO:</label>
-        <input type="text" class="form-control" id="pwprt">
-      </div>
-      <div class="form-group">
-        <label for="title">* Title:</label>
-        <input type="text" class="form-control" id="title">
-      </div>
-      <div class="form-group">
-        <label for="dept">* Department:</label>
-        <input type="text" class="form-control" id="dept">
-      </div>
+    <h4>Basic Information</h4>
+    <div id="basicinfo" style="padding:10px">
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <label for="usr">* Name:</label>
+          <input type="text" class="form-control" id="usr" style="padding-right:25px">
+        </div>
+        <div class="form-group">
+          <label for="pwprt">* PawPrint/SSO:</label>
+          <input type="text" class="form-control" id="pwprt">
+        </div>
+        <div class="form-group">
+          <label for="title">* Title:</label>
+          <input type="text" class="form-control" id="title">
+        </div>
+        <div class="form-group">
+          <label for="dept">* Department:</label>
+          <input type="text" class="form-control" id="dept">
+        </div>
         <div class="form-group">
           <label for="empID">* Employee ID:</label>
           <input type="text" class="form-control" id="empID">
@@ -59,7 +58,7 @@
         </div>
       </form>
     </div>
-    
+      
 
     <h4>Request Information</h4>
     <div id="reqinfo" style="padding:10px">
@@ -79,7 +78,7 @@
         </div>
       </form>
     </div>
-    
+      
 
     <h4>FERPA Score</h4>
     <div id="ferpa" style="padding:10px">
@@ -91,14 +90,14 @@
         <input type="text" class="form-control " id="usr" style="padding-right:25px">
       </div>
     </div>
-    
+      
 
     <h4>Academic Careers</h4>
     <div id="acadcar" style="padding:10px">
       <div>
         <p style="padding-bottom:10px">* Select the Academic Carrer(s). Please check all that apply.</p>
         <form role="form" style="padding-bottom:10px" style="padding:10px">
-          <label class="checkbox-inline"style="padding-left:25px">
+          <label class="checkbox"style="padding-left:25px">
             <input type="checkbox" value="">UGRD
           </label>
           <label class="checkbox-inline" style="padding-left:25px">
@@ -237,7 +236,7 @@
         </tr>
       </table>
     </div>
-  
+    
 
     <h4>Admissions Access</h4>
     <div id="admiss" style="padding:10px">
@@ -298,13 +297,13 @@
           </label>
         </form>
     </div>
-    
+      
 
     <h4>Student Financials (Cashiers) Access</h4>
     <div id="stucashiers" style="padding:10px">
       <table style="width:100%">
         <tr>
-        <th>Role</th>
+          <th>Role</th>
           <th>Role Description</th>   
           <th>View</th>
           <th>Update</th>
@@ -323,7 +322,7 @@
         </tr>
       </table>
     </div>
-   
+     
 
     <h4>Student Financial Aid Access</h4>
     <div id="stufinaid" style="padding:10px">
@@ -348,8 +347,8 @@
         </tr>
       </table>
     </div>
+          
         
-      
     <h4>Reserved Access</h4>
     <div id="reserved" style="padding:10px">
       <table style="width:100%">
@@ -395,19 +394,18 @@
         </tr>
       </table>
     </div>
-    
+      
 
     <h4>Authorization</h4>  
     <div id="auth" style="padding:10px">
       <p>By signing, I understand any access given me is for University purposes as part of my job responsibilities. I am responsible for exercising due care to protect this information from unauthorized discloser by safeguarding my password(s) and ensuring the data I obtain is disseminated only through approved University channels. Unauthorized access and use/dissemination of data, are serious offenses, which may be subjected to disciplinary action.</p>
 
-    </div>
-    
-</div>
+    </div>     
+  </div>
 
-<button type="button" class="btn btn-edit">Edit Form</button>
-<button type="button" class="btn btn-save">Download/print?</button>
-<button type="button" class="btn btn-submit">Submit Form</button>
+  <button type="button" class="btn btn-edit">Edit Form</button>
+  <button type="button" class="btn btn-save">Download/print?</button>
+  <button type="button" class="btn btn-submit">Submit Form</button>
 
-</body>
+  </body>
 </html>
