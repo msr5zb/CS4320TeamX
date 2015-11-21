@@ -14,14 +14,14 @@ class CreateAcademicCareersTable extends Migration
     {
         Schema::dropIfExists('academicCareers');
         Schema::create('academicCareers', function (Blueprint $table) {
-            $table->integer('requestId')->unsigned();
+            $table->integer('id')->unsigned();
             $table->boolean('ugrd')->default(0);
             $table->boolean('grad')->default(0);
             $table->boolean('med')->default(0);
             $table->boolean('vetMed')->default(0);
             $table->boolean('law')->default(0);
-            $table->foreign('requestId')->references('requestId')->on('request');
-            $table->primary('requestId');
+            $table->foreign('id')->references('id')->on('request');
+            $table->primary('id');
         });
     }
 

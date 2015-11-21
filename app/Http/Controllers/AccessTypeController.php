@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Request as Request1;
 
 class AccessTypeController extends Controller {
 
@@ -30,9 +31,10 @@ class AccessTypeController extends Controller {
 	// This is still not working  
 	public function store(Requests\CreateAccTypeRequest $request) {
 
-		$requestTable = new \Request;
-		$requestTable->create(['accessDescription' => $request['accDesc']]);	
+		$requestTable = new Request1;
 
-		var_dump($requestTable);
+		$requestTable->create(['requestDescription' => $request['accDesc'], 'userSSO' => \Auth::user()->userSSO, ]);	
+		return "To Do";
+
 	}
 }

@@ -14,7 +14,7 @@ class CreateAdmissionsTable extends Migration
     {
         Schema::dropIfExists('admissions');
         Schema::create('admissions', function (Blueprint $table) {
-            $table->integer('requestId')->unsigned();
+            $table->integer('id')->unsigned();
             $table->boolean('act')->default(0);
             $table->boolean('sat')->default(0);
             $table->boolean('gre')->default(0);
@@ -30,8 +30,8 @@ class CreateAdmissionsTable extends Migration
             $table->boolean('prax')->default(0);
             $table->boolean('plamu')->default(0);
             $table->boolean('base')->default(0);
-            $table->foreign('requestId')->references('requestId')->on('request');
-            $table->primary('requestId');
+            $table->foreign('id')->references('id')->on('request');
+            $table->primary('id');
         });
     }
 
