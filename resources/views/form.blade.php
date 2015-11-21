@@ -63,8 +63,22 @@
 	            <input type="text" class="form-control" id="phnum">
 	          </div>
 	        </form>
-	        <button type="button" class="btn btn-save" name="creator_progress">Save Progress</button>
-	        <button type="button" class="btn cont1" value="creator_continue">Continue</button>
+	        <form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
+    			<input type="button" name="submit" value="Submit">
+			</form>
+	    <!--    <input type="submit" class="btn btn-save" name="save">Save Progress</button>
+	-->
+	        <button type="button" class="btn cont1" value="u_continue">Continue</button>
+
+	        <?php
+	        	$clicked = 0;
+	        	if(isset($_POST["submit"])) {
+	        		$clicked = $clicked++;
+	        	}
+	        	
+	        	echo "$clicked" ;
+	        	
+	        ?>
 
 	      </div>
 	    </div>
