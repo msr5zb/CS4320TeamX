@@ -64,7 +64,7 @@
 	          </div>
 	        </form>
 	        <form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
-    			<input type="button" name="submit" value="Submit">
+    			<input type="button" name="Submit" value="Submit">
 			</form>
 	    <!--    <input type="submit" class="btn btn-save" name="save">Save Progress</button>
 	-->
@@ -485,12 +485,22 @@
 	      <div id="auth" class="panel-collapse collapse" style="padding:25px">
 	        <p>By signing, I understand any access given me is for University purposes as part of my job responsibilities. I am responsible for exercising due care to protect this information from unauthorized discloser by safeguarding my password(s) and ensuring the data I obtain is disseminated only through approved University channels. Unauthorized access and use/dissemination of data, are serious offenses, which may be subjected to disciplinary action.</p>
 	        <button type="button" class="btn btn-save">Save Progress</button>
-	        <button type="button" class="btn cont-final">Review and Submit Form</button>
+	        <button type="submit" name="submit" class="btn cont-final">Review and Submit Form</button>
 	      </div>
 	    </div>
 
 	  </div> 
 	</div>
+
+	<?php
+		if( isset( $_POST[ 'submit' ] ) )
+		{
+			//step 1: assert all required fields were added
+			assert( isset( $_GET[ 'name' ] ) );
+			//step 2: grab all variables
+			//step 3: return them to the controller??? and/or return them to model??? (how do I persist changes to our database?)
+		} //end if
+	?>
 
 	<script>
 	$('.btn btn-cont').on('click',function(e){
