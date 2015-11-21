@@ -14,8 +14,11 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
-//Route::post('home', 'HomeController@start');
 Route::get('testScore', 'AccessTypeController@testScore');
+Route::post('testScore', 'AccessTypeController@updateFScore');
+Route::get('accessDesc', 'AccessTypeController@accessDesc'); // This works
+Route::post('accessDesc', 'AccessTypeController@store'); // Having trouble with this
+//Route::get('', 'StudentRecordContoller@basicIn');	
 
 Route::get( 'karaform', 'FormController@index' );
 
