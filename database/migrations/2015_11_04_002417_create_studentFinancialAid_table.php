@@ -14,11 +14,11 @@ class CreateStudentFinancialAidTable extends Migration
     {
         Schema::dropIfExists('studentFinancialAid');
         Schema::create('studentFinancialAid', function (Blueprint $table) {
-            $table->integer('requestId')->unsigned();
+            $table->integer('id')->unsigned();
             $table->boolean('cashView')->default(0);
             $table->boolean('nonFinancialAidStaff')->default(0);
-            $table->foreign('requestId')->references('requestId')->on('request');
-            $table->primary('requestId');
+            $table->foreign('id')->references('id')->on('request');
+            $table->primary('id');
         });
     }
 

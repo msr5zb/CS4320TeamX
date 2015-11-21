@@ -14,13 +14,14 @@ class CreateRequestTable extends Migration
     {
         Schema::dropIfExists('request');
         Schema::create('request', function (Blueprint $table) {
-            $table->increments('requestId');
+            $table->increments('id');
             $table->string('userSSO', 6);
             $table->string('requestDescription', 100);
-            $table->string('pathHash', 50);
+            $table->string('pathHash', 50)->nullable();
+            $table->timestamps();
             $table->foreign('userSSO')->references('userSSO')->on('users');
             $table->index('userSSO');
-            $table->index(['userSSO','requestId']);
+            $table->index(['userSSO','id']);
         });
     }
 
