@@ -20,6 +20,8 @@ Route::get('accessDesc', 'AccessTypeController@accessDesc'); // This works
 Route::post('accessDesc', 'AccessTypeController@store'); // Having trouble with this
 //Route::get('', 'StudentRecordContoller@basicIn');	
 
+Route::get( 'karaform', 'FormController@index' );
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
