@@ -13,6 +13,7 @@ class UserTableSeeder extends Seeder {
           'lname' => 'Rios',
           'title' => 'Cheif Database Bro',
           'address' => '303 Foxfire Drive',
+		  'admin' => TRUE,
           'ferpaScore' => 10,
           'employeeId' => 124123,
           'password' => bcrypt("password"),
