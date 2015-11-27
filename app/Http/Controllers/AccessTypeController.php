@@ -44,4 +44,4 @@ class AccessTypeController extends Controller {
 // 		ChromePhp::log($value);
 // 		return view('accessType.accessAdmission');
 // 	}
-// }
+}
