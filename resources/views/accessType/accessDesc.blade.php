@@ -1,7 +1,8 @@
 @extends('app')
 
 @section('content')
-<div class="panel-heading"><h5>Access Type Description</h5></div>
+<section id="block-download " class="fancySection">
+<div class="panel-heading"><h3 class="centerInsides">Access Type Description</h3></div>
 <div class="panel-body">
 	<h4 align="center">Please describe the type of access needed(i.e. view student name, address, rosters, etc.). Please be specific:</h4>
 		{!! Form::open() !!}
@@ -17,5 +18,5 @@
 		</div>
 		{!! Form::close() !!}
 	</div>
-</div>
+    </section> 
 @endsection

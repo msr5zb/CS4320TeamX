@@ -18,8 +18,9 @@ Route::get('testScore', 'AccessTypeController@testScore');
 Route::post('testScore', 'AccessTypeController@updateFScore');
 Route::get('accessDesc', 'AccessTypeController@accessDesc'); // This works
 Route::post('accessDesc', 'AccessTypeController@store'); // Having trouble with this
-//Route::get('', 'StudentRecordContoller@basicIn');	
-
+//Route::get('', 'StudentRecordContoller@basicIn');
+Route::get('recordAccess', 'AccessTypeController@recordAccess');
+// Route::post('accessAcademic', 'AccessTypeController@selectAcademicCareer');
 Route::get( 'karaform', 'FormController@index' );
 
 Route::controllers([

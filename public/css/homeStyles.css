@@ -4,7 +4,7 @@ body{
     background-position: left bottom;
     background-attachment: fixed;
     background-size: 40% 60%;
-    
+    background-color: black;
 }
 
 .score {

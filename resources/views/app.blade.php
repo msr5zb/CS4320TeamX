@@ -7,7 +7,7 @@
 	<title>Laravel</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/homeStyles.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/docs.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -20,8 +20,10 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
+    
+ <!-- ************************* Navbar *************************** -->
+<header class="navbar navbar-inverse navbar-fixed-top">		
+    <div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
@@ -36,13 +38,24 @@
 				<ul class="nav navbar-nav">
 					@if (!Auth::guest())
 						<li><a href="{{ url('/') }}">Home</a></li>
+						<li><a href="{{ url('/') }}">Feedback/Issues</a></li>
+						<li><a href="{{ url('/') }}">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Release Forms <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="{{url('/testScore')}}">Create New Form</a></li>
+                                <li><a tabindex="-1" href="{{url('/') }}">View Forms</a></li>
+                            </ul>
+                        </li>                    
 					@endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (!Auth::guest())
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->userSSO }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false"> {{ Auth::user()->userSSO }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
@@ -51,12 +64,28 @@
 				</ul>
 			</div>
 		</div>
-	</nav>
-	<div class="container">
+    </header>
+    
+ <!-- ************************* Banner *************************** -->
+        <header class="bs-header">
+            <div class="container group">
+                      <!-- Column Left -->
+        <div class="floatLeft">
+            <img src="{{ asset('/images/tiger.png') }}" id="tigerPic" />
+        </div>
+
+        <!-- Column Right -->
+        <div class="floatLeft">
+          <h1>AccessZou</h1><p class="lead">Just Zou it.</p>          
+        </div>         
+            </div>
+        </header>
+    
+  <!-- ************************* Content *************************** -->
+	<div class="container" id="layout">
 		@if (!Auth::guest())
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
+			<div class="col-lg-12 col-sm-9">
 		@endif
 				@yield('content')
 				@if ( $errors->any() )
@@ -67,7 +96,6 @@
 					</ul>
 				@endif
 		@if (!Auth::guest())
-				</div>
 			</div>
 		</div>
 		@endif
