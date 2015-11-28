@@ -11,7 +11,7 @@ class Request extends Model {
 	protected $primaryKey = 'requestId';
 
 	// Turn off timestamps (Not: eloquent tries to update these every inserts and updates;)
-	public $timestamps = false; // We do not have timestamps defined in this table
+	public $timestamps = true; // We do not have timestamps defined in this table
 
 	// For Mass assignment, Will throw an error if attempt to mass assign with a variable thats not defined in this array 
 	protected $fillable = ['userSSO', 'requestDescription'];
