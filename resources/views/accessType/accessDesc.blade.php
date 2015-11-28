@@ -8,7 +8,7 @@
 		<div class="form-group">
 			<div class="row" >
 				<div class="col-md-12"> 
-					{!! Form::textarea('accDesc', null, ['class' => 'form-control typeDesc', 'id' => 'textarea']) !!}	
+					{!! Form::textarea('accessDescription', null, ['class' => 'form-control typeDesc', 'id' => 'textarea']) !!}	
 				</div>
 			</div>
 			<div id="textarea_feedback"></div>
