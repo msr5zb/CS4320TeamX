@@ -5,7 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Request as Request1;
-use App\Online;
+use Session;
+use App\AcademicCareers as Careers; 
 
 class AccessTypeController extends Controller {
 
@@ -15,40 +16,67 @@ class AccessTypeController extends Controller {
 	}
 	//validate the ferpa score request and store in DB
 	public function updateFScore(Requests\UpdatefScoreRequest $request) {
+		// This needs to change...for security reasons...we should never access/update user table after login
 		$user = \Auth::user();
 		$user->update(['ferpaScore' => $request['Score']]);
-		//var_dump($user);
+	
 		return redirect('accessDesc');
 	}
 	//Access description view
 	public function accessDesc() {
 		return view('accessType.accessDesc');
 	}
-	// This is still not working
-	public function store(Requests\CreateAccTypeRequest $request) {
-		//$requestDesc = new Request1;
-	 	//$request['accessDescription'];
-		//$requestTable->create(['requestDescription' => $request['accessDescription'], 'userSSO' => \Auth::user()->userSSO, ]);	
-		$user = \App\Online::all();
+	// Store the access description and render new view
+	public function storeDesc(Requests\CreateAccTypeRequest $request) {
 		
-		return $user;
+		$user = Session::get('userData');// Get userSSO from session var		
+		// Insert the request description into request table
+		$id = Request1::create([ 'requestDescription' => $request['accessDescription'] , 'userSSO' => $user ]);
+		Session::put('requestId', $id['requestId']);// Add the requestId to the session variable
 
-		$requestTable = new Request1;
-
-		$requestTable->create(['requestDescription' => $request['accDesc'], 'userSSO' => \Auth::user()->userSSO, ]);
-		return redirect('recordAccess');
-
+		return redirect('accessAcademic'); 
 	}
 
-	public function recordAccess() {
-		# code...
-		return view('accessType.recordAccess');
+	// Render the academic career selection
+	public function accessAcademic() {
+		return view('accessType.accessAcademic');
 	}
 
-// 	public function selectAcademicCareer(Requests\SelectAcademicCareer $request) {
-// 		$value = $request['selCareer'];
-// 		$request->session()->put('selCareer', $value);
-// 		ChromePhp::log($value);
-// 		return view('accessType.accessAdmission');
-// 	}
+	// Store the Academic Career selection into DB
+	public function storeAccAcad(Requests\SelectAcademicCareer $request) {
+
+		// Hold the validility of career
+		$ugrd = false;
+		$grad = false;
+		$med = false;
+		$vetMed = false;
+		$law = false;
+
+		$stuff = $request['selectCareer']; // Get the array of career boxes
+
+		// Set career values with requested value
+		foreach($stuff as $s){
+			if($s == 'ugrd'){
+				$ugrd = true;
+			}
+			else if($s == 'grad'){
+				$grad = true;
+			}
+			else if($s == 'med'){
+				$med = true;
+			}
+			else if($s == 'vetmed'){
+				$vetMed = true;
+			}
+			else if($s == 'law'){
+				$law = true;
+			}
+		}
+
+		$rId = Session::get('requestId'); // Get requestId from session var
+
+		Careers::create([ 'requestId' => $rId , 'ugrd' => $ugrd , 'grad' => $grad , 'med' => $med , 'vetMed' => $vetMed, 'law' => $law ]);
+
+		return 'Success';	z
+	}
 }
