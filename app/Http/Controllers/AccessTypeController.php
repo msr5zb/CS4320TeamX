@@ -89,12 +89,23 @@ class AccessTypeController extends Controller {
 		if($request['studentPrompt'] == 'Yes') {
 			return 'ToDO';
 		}
-		else if($reques['studentPrompt'] == 'No'){
+		else if($request['studentPrompt'] == 'No'){
 			return redirect('admissionPrompt');
 		}
 	}
 
 	public function admissionPrompt(){
 		return view('accessType.accessPrompt.admissionPrompt');
+	}
+
+	public function isAdmissionAccess(Requests\AdmissionPrompt $request){
+
+		if($request['admissionPrompt'] == 'Yes') {
+			return 'ToDO(yes)';
+		}
+		else if($request['admissionPrompt'] == 'No'){
+			return 'ToDo(no)';
+		}
+
 	}
 }
