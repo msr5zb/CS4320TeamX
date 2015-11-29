@@ -12,8 +12,8 @@ class CreateStudentFinancialAidTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('studentFinancialAid');
-        Schema::create('studentFinancialAid', function (Blueprint $table) {
+        Schema::dropIfExists('student_financial_aid');
+        Schema::create('student_financial_aid', function (Blueprint $table) {
             $table->integer('requestId')->unsigned();
             $table->boolean('cashView')->default(0);
             $table->boolean('nonFinancialAidStaff')->default(0);

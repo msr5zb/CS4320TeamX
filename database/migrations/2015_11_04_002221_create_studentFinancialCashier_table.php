@@ -12,8 +12,8 @@ class CreateStudentFinancialCashierTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('studentFinancialCashier');
-        Schema::create('studentFinancialCashier', function (Blueprint $table) {
+        Schema::dropIfExists('student_financialCashier');
+        Schema::create('student_financialCashier', function (Blueprint $table) {
             $table->integer('requestId')->unsigned();
             $table->boolean('generalInquiryView')->default(0);
             $table->boolean('cashGroupPostView')->default(0);

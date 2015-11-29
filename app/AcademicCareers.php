@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AcademicCareers extends Model
 {
     // Specified the table this model points towards
-    protected $table = 'academicCareers';
+    protected $table = 'academic_careers';
 
 	// Set the primaryKey
 	protected $primaryKey = 'requestId';
