@@ -75,6 +75,7 @@ class AccessTypeController extends Controller {
 
 		$rId = Session::get('requestId'); // Get requestId from session var
 
+
 		Careers::create([ 'requestId' => $rId , 'ugrd' => $ugrd , 'grad' => $grad , 'med' => $med , 'vetMed' => $vetMed, 'law' => $law ]);
 
 		return 'Success';
