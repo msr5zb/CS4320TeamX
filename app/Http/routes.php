@@ -18,7 +18,7 @@ Route::get('testScore', 'AccessTypeController@testScore');
 Route::post('testScore', 'AccessTypeController@updateFScore');
 Route::get('accessDesc', 'AccessTypeController@accessDesc');
 Route::post('accessDesc', 'AccessTypeController@storeDesc');
-Route::get('accessAcademic', 'AccessTypeController@accessDesc');
+Route::get('accessAcademic', 'AccessTypeController@accessAcademic');
 Route::post('accessAcademic', 'AccessTypeController@storeAccAcad');
 
 Route::controllers([
