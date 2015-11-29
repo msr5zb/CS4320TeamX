@@ -20,7 +20,8 @@ class AcademicCareers extends Model
 
     //allow mass assignment for the following attributes
     protected $fillable = [
-    	'ugrd',
+    	'requestId',
+        'ugrd',
     	'grad',
     	'med',
     	'vetMed',
