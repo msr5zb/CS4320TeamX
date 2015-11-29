@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Sessions;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,6 +32,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		$user = \Auth::user();
+		Session::put('userData', $user->userSSO);
 		return view('home');
 	}
 
