@@ -17,7 +17,7 @@
       {!! Form::radio('selectCareer[]', 'med', false) !!} MED
     </div>
     <div class="col-md-2">
-      {!! Form::radio('selectCareer[]', 'vetMed', false) !!} VET MED
+      {!! Form::radio('selectCareer[]', 'vetmed', false) !!} VET MED
     </div>
     <div class="col-md-3">
       {!! Form::radio('selectCareer[]', 'law', false) !!} LAW
