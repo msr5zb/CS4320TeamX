@@ -23,6 +23,7 @@ Route::post('accessAcademic', 'AccessTypeController@storeAccAcad');
 Route::get('studentRecPrompt', 'AccessTypeController@studentRecPrompt');
 Route::post('studentRecPrompt', 'AccessTypeController@isStudentRecordsAccess');
 Route::get('admissionPrompt', 'AccessTypeController@admissionPrompt');
+Route::post('admissionPrompt', 'AccessTypeController@isAdmissionAccess');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
