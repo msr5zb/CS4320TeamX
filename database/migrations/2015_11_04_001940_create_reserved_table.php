@@ -14,7 +14,7 @@ class CreateReservedTable extends Migration
     {
           Schema::dropIfExists('reserved');
         Schema::create('reserved', function (Blueprint $table) {
-            $table->integer('requestId')->unsigned();
+            $table->integer('id')->unsigned();
             $table->boolean('immunizationView')->default(0);
             $table->boolean('immunizationUpdate')->default(0);
             $table->boolean('transferCreditAdmissionView')->default(0);
@@ -28,8 +28,8 @@ class CreateReservedTable extends Migration
             $table->boolean('supportStaffUpdate')->default(0);
             $table->boolean('advanceStandingReportView')->default(0);
             $table->boolean('advanceStandingReportUpdate')->default(0);
-            $table->foreign('requestId')->references('requestId')->on('request');
-            $table->primary('requestId');
+            $table->foreign('id')->references('id')->on('request');
+            $table->primary('id');
         });
     }
 

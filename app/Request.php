@@ -1,13 +1,13 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Request extends Model
-{
-    //allow mass assignment for the following attributes
-    protected $fillable = [
-    	''
-    ];
+class Request extends Model {
+
+	//
+	protected $table = 'request';
+
+
+	protected $fillable = ['userSSO', 'requestDescription'];
+
 }
