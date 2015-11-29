@@ -77,6 +77,6 @@ class AccessTypeController extends Controller {
 
 		Careers::create([ 'requestId' => $rId , 'ugrd' => $ugrd , 'grad' => $grad , 'med' => $med , 'vetMed' => $vetMed, 'law' => $law ]);
 
-		return 'Success';	z
+		return 'Success';
 	}
 }
