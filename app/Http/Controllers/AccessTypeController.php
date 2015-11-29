@@ -74,10 +74,27 @@ class AccessTypeController extends Controller {
 		}
 
 		$rId = Session::get('requestId'); // Get requestId from session var
-
-
+		// Insert into academic career table 
 		Careers::create([ 'requestId' => $rId , 'ugrd' => $ugrd , 'grad' => $grad , 'med' => $med , 'vetMed' => $vetMed, 'law' => $law ]);
 
-		return 'Success';
+		return redirect('studentRecPrompt');
+	}
+
+	public function studentRecPrompt() {
+		return view('accessType.accessPrompt.studentRecordsPrompt');
+	}
+
+	public function isStudentRecordsAccess(Requests\StudentRecordsPrompt $request) {
+
+		if($request['studentPrompt'] == 'Yes') {
+			return 'ToDO';
+		}
+		else if($reques['studentPrompt'] == 'No'){
+			return redirect('admissionPrompt');
+		}
+	}
+
+	public function admissionPrompt(){
+		return view('accessType.accessPrompt.admissionPrompt');
 	}
 }
