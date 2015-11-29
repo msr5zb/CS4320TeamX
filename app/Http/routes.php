@@ -16,12 +16,10 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('testScore', 'AccessTypeController@testScore');
 Route::post('testScore', 'AccessTypeController@updateFScore');
-Route::get('accessDesc', 'AccessTypeController@accessDesc'); // This works
-Route::post('accessDesc', 'AccessTypeController@store'); // Having trouble with this
-//Route::get('', 'StudentRecordContoller@basicIn');
-Route::get('recordAccess', 'AccessTypeController@recordAccess');
-// Route::post('accessAcademic', 'AccessTypeController@selectAcademicCareer');
-Route::get( 'karaform', 'FormController@index' );
+Route::get('accessDesc', 'AccessTypeController@accessDesc');
+Route::post('accessDesc', 'AccessTypeController@storeDesc');
+Route::get('accessAcademic', 'AccessTypeController@accessDesc');
+Route::post('accessAcademic', 'AccessTypeController@storeAccAcad');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
