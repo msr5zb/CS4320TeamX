@@ -8,10 +8,10 @@
 		<div class="form-group">
 			<div class="row" >
 				<div class="col-md-4 col-md-offset-2"> 
-					<input type="submit" class="btn btn-success form-control" name="studentPrompt" value="Yes" >	
+					<input type="submit" class="btn btn-success form-control" name="admissionPrompt" value="Yes" >	
 				</div>
 				<div class="col-md-4"> 
-					<input type="submit" class="btn btn-danger form-control" name="studentPrompt" value="No" >	
+					<input type="submit" class="btn btn-danger form-control" name="admissionPrompt" value="No" >	
 				</div>  
 			</div>
 		</div>
