@@ -35,7 +35,7 @@
     Access to basic bio demo and student data: names, address, FERPA directory data, photos, term info, degree information, programs, honors and awards, service indicators (holds) and previous schools.
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('basicInq', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'basicInquiryView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('fACash[]', 'update', false) !!}</center> -->
@@ -49,10 +49,10 @@
     ncludes Basic Inquiry access. Additionally includes relations with institution, citizenship, visa, decedant data, student enrollment, gpa, term history, 3C's, advisors, student groups
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('advInq[]', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'advancedInquiryView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('advInq[]', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'advancedInquiryUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -63,10 +63,10 @@
     Checklists, Comments, Communications
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('3cs[]', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'threeCsView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('3cs[]', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'threeCsUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -80,7 +80,7 @@
     <!-- <center>{!! Form::checkbox('fACash[]', 'view', false) !!}</center> -->
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('advUpdate', 'update', false) !!}</center>
+      <center>{!! Form::checkbox('recordAccess[]', 'advisorUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -94,7 +94,7 @@
     <!-- <center>{!! Form::checkbox('fACash[]', 'view', false) !!}</center> -->
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('depSOCUpdate', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'departmentSOCUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -105,10 +105,10 @@
     Administrative users with proper security can assign or remove service indicators from a student's record
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('servInd[]', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'serviceIndicatorsView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('servInd[]', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'serviceIndicatorsUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -119,7 +119,7 @@
     View groups a student is associated with
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('sGroupView[]', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'studentGroupView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('fACash[]', 'update', false) !!}</center> -->
@@ -133,7 +133,7 @@
     View a student's class schedule
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('viewStudyList', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'studyListView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('fACash[]', 'update', false) !!}</center> -->
@@ -147,10 +147,10 @@
     Adding and dropping a course utilizing Enrollment Request
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('registrarEnroll[]', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'registerEnrollmentView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('registrarEnroll[]', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'registerEnrollmentUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -161,7 +161,7 @@
     Access to students study list, advisor, program/plan, demographic data, e-mail address
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('advStudentCenter', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'advisorStudentCenterView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('advStudentCenter[]', 'update', false) !!}</center> -->
@@ -178,7 +178,7 @@
     <!-- <center>{!! Form::checkbox('advStudentCenter', 'view', false) !!}</center> -->
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('classPermission', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'classPermissionUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -189,7 +189,7 @@
     View class permission numbers which have been created for a course
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('classPermissionView', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'classPermissionView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('classPermission', 'update', false) !!}</center> -->
@@ -203,7 +203,7 @@
     View students enrolled, dropped or withdrawn in a course
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('classRoster', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'classRosterView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('classPermission', 'update', false) !!}</center> -->
@@ -217,10 +217,10 @@
     Adding and dropping a course utilizing Enrollment Request
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('blockEnroll[]', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'blockEnrollmentsView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('blockEnroll[]', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'blockEnrollmentsUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -231,7 +231,7 @@
     Assists in running various reports
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('reportManager', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'reportManagerView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('blockEnroll[]', 'update', false) !!}</center> -->
@@ -248,7 +248,7 @@
     <!-- <center>{!! Form::checkbox('reportManager', 'view', false) !!}</center> -->
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('selfServiceAdvisor', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'selfServiceAdvisorUpdate', false) !!}</center>
   </div>
 </div>
 <div class="row">
@@ -259,7 +259,7 @@
     View enrollment summary, term statistics, and UM term statistics
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('fiscalOfficer', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('recordAccess[]', 'fiscalOfficerView',  false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('selfServiceAdvisor', 'update', false) !!}</center> -->
@@ -276,7 +276,7 @@
     <!-- <center>{!! Form::checkbox('acdAdvProfile', 'view', false) !!}</center> -->
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('acdAdvProfile', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('acadmenicAdvisingProfileUpdate', false) !!}</center>
   </div>
 </div>
 
