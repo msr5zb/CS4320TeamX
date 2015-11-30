@@ -87,15 +87,21 @@
 		<div class="row">
 			<div class="col-lg-12 col-sm-9">
 		@endif
-				@yield('content')
-				@if ( $errors->any() )
-					<ul class="alert alert-danger">
-						@foreach ($errors->all() as $error)
-							<li>{{ $error }}</li>
-						@endforeach
-					</ul>
-				@endif
-		@if (!Auth::guest())
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2" >
+				<div class="panel panel-default" >
+					@yield('content')
+						@if ( $errors->any() )
+							<ul class="alert alert-danger">
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						@endif
+				</div>
+			</div>
+		</div>
+			@if (!Auth::guest())
 			</div>
 		</div>
 		@endif
