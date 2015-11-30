@@ -35,7 +35,7 @@
     View a student's financial aid awards and budget
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('fACash', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('fACash[]', 'cashView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('fACash', 'update', false) !!}</center> -->
@@ -49,7 +49,7 @@
     Also known as "Cost Centers" (for areas that want to apply charges)
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('fAnfas', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('fACash[]', 'nonFinancialAidStaff', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('fAnfas[]', 'update', false) !!}</center> -->

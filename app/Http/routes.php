@@ -36,6 +36,9 @@ Route::post('admissionAccess', 'AccessTypeController@storeAdmissions');
 
 Route::get('finanCashierPrompt', 'AccessTypeController@finanCashierPrompt');
 
+Route::get('financialAidAccess','AccessTypeController@financialAidAccessShow');
+Route::post('financialAidAccess','AccessTypeController@studentFinancialAidStore');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

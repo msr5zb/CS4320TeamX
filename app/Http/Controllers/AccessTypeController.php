@@ -8,7 +8,8 @@ use App\Request as Request1;
 use Session;
 use App\AcademicCareers as Careers;
 use App\StudentRecords as Records;
-use App\Admissions as Admissions; 
+use App\Admissions as Admissions;
+use App\StudentFinancialAid as StudentFinancialAid;
 
 class AccessTypeController extends Controller {
 
@@ -105,23 +106,23 @@ class AccessTypeController extends Controller {
 	public function admissionPrompt(){
 		return view('accessType.accessPrompt.admissionPrompt');
 	}
-	// Check admission prompt 
+	// Check admission prompt
 	public function isAdmissionAccess(Requests\AdmissionPrompt $request){
 
 		if($request['admissionPrompt'] == 'Yes') {
 			return redirect('admissionAccess');
 		}
 		else if($request['admissionPrompt'] == 'No'){
-			return 'ToDo(no)';
+			return 'To Do';
 		}
 	}
-	// View for admission access request 
+	// View for admission access request
 	public function admissionAccess() {
 		return view('accessType.accessAdmission');
 	}
 
 	public function storeAdmissions(Requests\Admissions $request) {
-		
+
 		// Set all variable to false
 		$act = false;
 		$sat = false;
@@ -139,10 +140,10 @@ class AccessTypeController extends Controller {
 		$pla_mu = false;
 		$base = false;
 
-		// Get the array of inputs 
+		// Get the array of inputs
 		$inR = $request['admissionsAccess'];
 
-		// Determine the validity 
+		// Determine the validity
 		foreach($inR as $s) {
 			if($s == 'selectAll') {
 				$act = true;
@@ -209,7 +210,7 @@ class AccessTypeController extends Controller {
 			}
 		}
 		$rId = Session::get('requestId'); // Get requestId from session var
-		// Insert into admissions table 
+		// Insert into admissions table
 		Admissions::create(['requestId' => $rId , 'act' => $act , 'sat' => $sat , 'gre' => $gre , 'gmat' => $gmat , 'tofel' => $tofel , 'ielts' => $ielts , 'lsat' => $lsat , 'mcat' => $mcat , 'ap' => $ap , 'clep' => $clep , 'ged' => $ged , 'millers' => $millers , 'prax' => $prax , 'plamu' => $pla_mu , 'base' => $base ]);
 
 		return redirect('accessType.accessPrompt.finanCashierPrompt');
@@ -276,5 +277,32 @@ class AccessTypeController extends Controller {
 	public function finanCashierPrompt(){
 		return view('accessType.accessPrompt.finanCashierPrompt');
 	}
-	
+
+	public function financialAidAccessShow()
+	{
+		var_dump('Here');
+		return view('accessType.financialAidAccess');
+	}
+
+	public function studentFinancialAidStore(Requests\StudentFinancialAid $request)
+	{
+		$dbFileds = [
+			'requestId',
+			'cashView',
+			'nonFinancialAidStaff'
+	];
+	$dbFiledsValues = [
+		'requestId' =>  Session::get('requestId'),
+		'cashView' => false,
+		'nonFinancialAidStaff' => false
+	];
+	for ($i=0; $i < count($request['fACash']); $i++) {
+		if(in_array($request['fACash'][$i], $dbFileds)) {
+			$dbFiledsValues[$request['fACash'][$i]] = true;
+		}
+	}
+	StudentFinancialAid::create($dbFiledsValues);
+	return 'Navigate to Nxt Form';
+	}
+
 }

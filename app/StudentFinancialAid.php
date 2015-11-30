@@ -17,9 +17,10 @@ class StudentFinancialAid extends Model
 
 	// Turn off incrementer, since eloquent assumes each table has a variable that auto increments
 	public $increments = false;
-	
+
     //allow mass assignment for the following attributes
     protected $fillable = [
+			'requestId',
     	'cashView',
 		'nonFinancialAidStaff'
 	];
