@@ -213,7 +213,7 @@ class AccessTypeController extends Controller {
 		// Insert into admissions table
 		Admissions::create(['requestId' => $rId , 'act' => $act , 'sat' => $sat , 'gre' => $gre , 'gmat' => $gmat , 'tofel' => $tofel , 'ielts' => $ielts , 'lsat' => $lsat , 'mcat' => $mcat , 'ap' => $ap , 'clep' => $clep , 'ged' => $ged , 'millers' => $millers , 'prax' => $prax , 'plamu' => $pla_mu , 'base' => $base ]);
 
-		return redirect('accessType.accessPrompt.finanCashierPrompt');
+		return redirect('finanCashierPrompt');
 
 	}
 	public function recordAccessStore(Requests\RecordAccess $request)
@@ -305,4 +305,41 @@ class AccessTypeController extends Controller {
 	return 'Navigate to Nxt Form';
 	}
 
+	public function isFinanCashier(Requests\CashierPrompt $request) {
+
+		if($request['cashierPrompt'] == 'Yes') {
+			return 'ToDo(yes)';
+		}
+		else if($request['cashierPrompt'] == 'No'){
+			return redirect('finanAidPrompt');
+		}
+	}
+
+	public function finanAidPrompt() {
+		return view('accessType.accessPrompt.finanAidPrompt');
+	}
+
+	public function isFinanAid(Requests\AidPrompt $request){
+
+		if($request['aidPrompt'] == 'Yes') {
+			return 'ToDo(yes)';
+		}
+		else if($request['aidPrompt'] == 'No'){
+			return redirect('reservedPrompt');
+		}
+	}
+
+	public function reservedPrompt(){
+		return view('accessType.accessPrompt.reservedPrompt');
+	}
+
+	public function isReserved(Requests\ReservedPrompt $request){
+
+		if($request['reservedPrompt'] == 'Yes') {
+			return 'ToDo(yes)';
+		}
+		else if($request['reservedPrompt'] == 'No'){
+			return 'ToDo(no)';
+		}
+	}
 }

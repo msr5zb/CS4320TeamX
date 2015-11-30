@@ -35,6 +35,13 @@ Route::get('admissionAccess', 'AccessTypeController@admissionAccess');
 Route::post('admissionAccess', 'AccessTypeController@storeAdmissions');
 
 Route::get('finanCashierPrompt', 'AccessTypeController@finanCashierPrompt');
+Route::post('finanCashierPrompt', 'AccessTypeController@isFinanCashier');
+
+Route::get('finanAidPrompt', 'AccessTypeController@finanAidPrompt');
+Route::post('finanAidPrompt', 'AccessTypeController@isFinanAid');
+
+Route::get('reservedPrompt', 'AccessTypeController@reservedPrompt');
+Route::post('reservedPrompt', 'AccessTypeController@isReserved');
 
 Route::get('financialAidAccess','AccessTypeController@financialAidAccessShow');
 Route::post('financialAidAccess','AccessTypeController@studentFinancialAidStore');
