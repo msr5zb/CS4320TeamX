@@ -212,7 +212,7 @@ class AccessTypeController extends Controller {
 		// Insert into admissions table 
 		Admissions::create(['requestId' => $rId , 'act' => $act , 'sat' => $sat , 'gre' => $gre , 'gmat' => $gmat , 'tofel' => $tofel , 'ielts' => $ielts , 'lsat' => $lsat , 'mcat' => $mcat , 'ap' => $ap , 'clep' => $clep , 'ged' => $ged , 'millers' => $millers , 'prax' => $prax , 'plamu' => $pla_mu , 'base' => $base ]);
 
-		return 'Success';
+		return redirect('accessType.accessPrompt.finanCashierPrompt');
 
 	}
 	public function recordAccessStore(Requests\RecordAccess $request)
@@ -272,4 +272,9 @@ class AccessTypeController extends Controller {
 		Records::create($recordTypesValues);
 		return redirect('admissionPrompt');
 	}
+
+	public function finanCashierPrompt(){
+		return view('accessType.accessPrompt.finanCashierPrompt');
+	}
+	
 }
