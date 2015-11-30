@@ -8,6 +8,7 @@ use App\Request as Request1;
 use Session;
 use App\AcademicCareers as Careers;
 use App\StudentRecords as Records;
+use App\Admissions as Admissions; 
 
 class AccessTypeController extends Controller {
 
@@ -53,10 +54,10 @@ class AccessTypeController extends Controller {
 		$vetMed = false;
 		$law = false;
 
-		$stuff = $request['selectCareer']; // Get the array of career boxes
+		$inR = $request['selectCareer']; // Get the array of career boxes
 
 		// Set career values with requested value
-		foreach($stuff as $s){
+		foreach($inR as $s){
 			if($s == 'ugrd'){
 				$ugrd = true;
 			}
@@ -80,11 +81,11 @@ class AccessTypeController extends Controller {
 
 		return redirect('studentRecPrompt');
 	}
-
+	// Student record prompt
 	public function studentRecPrompt() {
 		return view('accessType.accessPrompt.studentRecordsPrompt');
 	}
-
+	// Check student records prompt
 	public function isStudentRecordsAccess(Requests\StudentRecordsPrompt $request) {
 
 		if($request['studentPrompt'] == 'Yes') {
@@ -100,10 +101,11 @@ class AccessTypeController extends Controller {
 		return view('accessType.recordAccess');
 	}
 
+	// Admission request prompt
 	public function admissionPrompt(){
 		return view('accessType.accessPrompt.admissionPrompt');
 	}
-
+	// Check admission prompt 
 	public function isAdmissionAccess(Requests\AdmissionPrompt $request){
 
 		if($request['admissionPrompt'] == 'Yes') {
@@ -113,13 +115,105 @@ class AccessTypeController extends Controller {
 			return 'ToDo(no)';
 		}
 	}
-
+	// View for admission access request 
 	public function admissionAccess() {
 		return view('accessType.accessAdmission');
 	}
 
 	public function storeAdmissions(Requests\Admissions $request) {
-		var_dump($request['admissionsAccess']);
+		
+		// Set all variable to false
+		$act = false;
+		$sat = false;
+		$gre = false;
+		$gmat = false;
+		$tofel = false;
+		$ielts = false;
+		$lsat = false;
+		$mcat = false;
+		$ap = false;
+		$clep = false;
+		$ged = false;
+		$millers = false;
+		$prax = false;
+		$pla_mu = false;
+		$base = false;
+
+		// Get the array of inputs 
+		$inR = $request['admissionsAccess'];
+
+		// Determine the validity 
+		foreach($inR as $s) {
+			if($s == 'selectAll') {
+				$act = true;
+				$sat = true;
+				$gre = true;
+				$gmat = true;
+				$tofel = true;
+				$ielts = true;
+				$lsat = true;
+				$mcat = true;
+				$ap = true;
+				$clep = true;
+				$ged = true;
+				$millers = true;
+				$prax = true;
+				$pla_mu = true;
+				$base = true;
+				break;
+			}
+			if($s == 'act') {
+				$act = true;
+			}
+			else if($s == 'sat'){
+				$sat = true;
+			}
+			else if($s == 'gre'){
+				$gre = true;
+			}
+			else if($s == 'gmat'){
+				$gmat = true;
+			}
+			else if($s == 'tofel'){
+				$tofel = true;
+			}
+			else if($s == 'ielts'){
+				$ielts = true;
+			}
+			else if($s == 'lsat'){
+				$lsat = true;
+			}
+			else if($s == 'mcat'){
+				$mcat = true;
+			}
+			else if($s == 'ap'){
+				$ap = true;
+			}
+			else if($s == 'clep'){
+				$clep = true;
+			}
+			else if($s == 'ged'){
+				$ged = true;
+			}
+			else if($s == 'millers'){
+				$millers = true;
+			}
+			else if($s == 'prax'){
+				$prax = true;
+			}
+			else if($s == 'pla_mu'){
+				$pla_mu = true;
+			}
+			else if($s == 'base'){
+				$base = true;
+			}
+		}
+		$rId = Session::get('requestId'); // Get requestId from session var
+		// Insert into admissions table 
+		Admissions::create(['requestId' => $rId , 'act' => $act , 'sat' => $sat , 'gre' => $gre , 'gmat' => $gmat , 'tofel' => $tofel , 'ielts' => $ielts , 'lsat' => $lsat , 'mcat' => $mcat , 'ap' => $ap , 'clep' => $clep , 'ged' => $ged , 'millers' => $millers , 'prax' => $prax , 'plamu' => $pla_mu , 'base' => $base ]);
+
+		return 'Success';
+
 	}
 	public function recordAccessStore(Requests\RecordAccess $request)
 	{
