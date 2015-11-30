@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel-heading"><h5>Student Records Access</h5></div>
 <div class="panel-body">
-	<h5 align="center">Would you like to request Student Records Access?</h5>
+	<h4 align="center">Would you like to request Student Records Access?</h4>
 		{!! Form::open() !!}
 		<div class="form-group">
 			<div class="row" >
