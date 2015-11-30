@@ -14,8 +14,10 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
+
 Route::get('testScore', 'AccessTypeController@testScore');
 Route::post('testScore', 'AccessTypeController@updateFScore');
+
 Route::get('accessDesc', 'AccessTypeController@accessDesc');
 Route::post('accessDesc', 'AccessTypeController@storeDesc');
 
@@ -24,7 +26,6 @@ Route::post('accessAcademic', 'AccessTypeController@storeAccAcad');
 
 Route::get('studentRecPrompt', 'AccessTypeController@studentRecPrompt');
 Route::post('studentRecPrompt', 'AccessTypeController@isStudentRecordsAccess');
-
 Route::get('recordAccess', 'AccessTypeController@recordAccess');
 Route::post('recordAccess', 'AccessTypeController@recordAccessStore');
 
@@ -32,6 +33,8 @@ Route::get('admissionPrompt', 'AccessTypeController@admissionPrompt');
 Route::post('admissionPrompt', 'AccessTypeController@isAdmissionAccess');
 Route::get('admissionAccess', 'AccessTypeController@admissionAccess');
 Route::post('admissionAccess', 'AccessTypeController@storeAdmissions');
+
+Route::get('finanCashierPrompt', 'AccessTypeController@finanCashierPrompt');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
