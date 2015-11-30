@@ -40,6 +40,9 @@ Route::post('finanCashierPrompt', 'AccessTypeController@isFinanCashier');
 Route::get('finanAidPrompt', 'AccessTypeController@finanAidPrompt');
 Route::post('finanAidPrompt', 'AccessTypeController@isFinanAid');
 
+Route::get('reservedPrompt', 'AccessTypeController@reservedPrompt');
+Route::post('reservedPrompt', 'AccessTypeController@isReserved');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
