@@ -20,7 +20,8 @@ class Admissions extends Model
 
     //allow mass assignment for the following attributes
     protected $fillable = [
-    	'act',
+    	'requestId',
+        'act',
     	'sat',
     	'gre',
     	'gmat',
