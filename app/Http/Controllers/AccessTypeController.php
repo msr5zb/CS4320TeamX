@@ -113,7 +113,7 @@ class AccessTypeController extends Controller {
 			return redirect('admissionAccess');
 		}
 		else if($request['admissionPrompt'] == 'No'){
-			return 'To Do';
+			return redirect('finanCashierPrompt');
 		}
 	}
 	// View for admission access request
@@ -280,7 +280,6 @@ class AccessTypeController extends Controller {
 
 	public function financialAidAccessShow()
 	{
-		var_dump('Here');
 		return view('accessType.financialAidAccess');
 	}
 
@@ -302,7 +301,7 @@ class AccessTypeController extends Controller {
 		}
 	}
 	StudentFinancialAid::create($dbFiledsValues);
-	return 'Navigate to Nxt Form';
+	return redirect('reservedPrompt');
 	}
 
 	public function isFinanCashier(Requests\CashierPrompt $request) {
@@ -322,7 +321,7 @@ class AccessTypeController extends Controller {
 	public function isFinanAid(Requests\AidPrompt $request){
 
 		if($request['aidPrompt'] == 'Yes') {
-			return 'ToDo(yes)';
+			return redirect('financialAidAccess');
 		}
 		else if($request['aidPrompt'] == 'No'){
 			return redirect('reservedPrompt');
