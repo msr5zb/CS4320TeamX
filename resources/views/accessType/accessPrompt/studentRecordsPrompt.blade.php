@@ -1,9 +1,9 @@
 @extends('app')
 
 @section('content')
-<div class="panel-heading"><h3 class="centerInsides">Student Records Access</h3></div>
+<div class="panel-heading"><h5>Student Records Access</h5></div>
 <div class="panel-body">
-	<h4 align="center">Would you like to request Student Records Access?</h4>
+	<h5 align="center">Would you like to request Student Records Access?</h5>
 		{!! Form::open() !!}
 		<div class="form-group">
 			<div class="row" >
