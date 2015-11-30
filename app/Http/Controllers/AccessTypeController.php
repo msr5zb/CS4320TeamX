@@ -298,6 +298,20 @@ class AccessTypeController extends Controller {
 			return 'ToDo(yes)';
 		}
 		else if($request['aidPrompt'] == 'No'){
+			return redirect('reservedPrompt');
+		}
+	}
+
+	public function reservedPrompt(){
+		return view('accessType.accessPrompt.reservedPrompt');
+	}
+
+	public function isReserved(Requests\ReservedPrompt $request){
+
+		if($request['reservedPrompt'] == 'Yes') {
+			return 'ToDo(yes)';
+		}
+		else if($request['reservedPrompt'] == 'No'){
 			return 'ToDo(no)';
 		}
 	}	
