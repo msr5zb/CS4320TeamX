@@ -35,6 +35,10 @@ Route::get('admissionAccess', 'AccessTypeController@admissionAccess');
 Route::post('admissionAccess', 'AccessTypeController@storeAdmissions');
 
 Route::get('finanCashierPrompt', 'AccessTypeController@finanCashierPrompt');
+Route::post('finanCashierPrompt', 'AccessTypeController@isFinanCashier');
+
+Route::get('finanAidPrompt', 'AccessTypeController@finanAidPrompt');
+Route::post('finanAidPrompt', 'AccessTypeController@isFinanAid');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
