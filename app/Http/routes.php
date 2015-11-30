@@ -18,10 +18,16 @@ Route::get('testScore', 'AccessTypeController@testScore');
 Route::post('testScore', 'AccessTypeController@updateFScore');
 Route::get('accessDesc', 'AccessTypeController@accessDesc');
 Route::post('accessDesc', 'AccessTypeController@storeDesc');
+
 Route::get('accessAcademic', 'AccessTypeController@accessAcademic');
 Route::post('accessAcademic', 'AccessTypeController@storeAccAcad');
+
 Route::get('studentRecPrompt', 'AccessTypeController@studentRecPrompt');
 Route::post('studentRecPrompt', 'AccessTypeController@isStudentRecordsAccess');
+
+Route::get('recordAccess', 'AccessTypeController@recordAccess');
+Route::post('recordAccess', 'AccessTypeController@recordAccessStore');
+
 Route::get('admissionPrompt', 'AccessTypeController@admissionPrompt');
 Route::post('admissionPrompt', 'AccessTypeController@isAdmissionAccess');
 

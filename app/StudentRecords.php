@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentRecords extends Model
 {
-    // Set the primary Key 
+    protected $table = 'studentRecords';
+    // Set the primary Key
     protected $primaryKey = 'requestId';
 
     // Turn off timestamps, since they are not included in the table
@@ -14,9 +15,10 @@ class StudentRecords extends Model
 
     //Turn off incrementer, eloquent expects a variable to auto increment
     public $increments = false;
-     
+
     //allow mass assignment for the following attributes
     protected $fillable = [
+        'requestId',
         'basicInquiryView',
         'advancedInquiryView',
         'advancedInquiryUpdate',

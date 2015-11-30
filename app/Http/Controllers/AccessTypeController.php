@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Request as Request1;
 use Session;
-use App\AcademicCareers as Careers; 
+use App\AcademicCareers as Careers;
+use App\StudentRecords as Records;
 
 class AccessTypeController extends Controller {
 
@@ -19,7 +20,7 @@ class AccessTypeController extends Controller {
 		// This needs to change...for security reasons...we should never access/update user table after login
 		$user = \Auth::user();
 		$user->update(['ferpaScore' => $request['Score']]);
-	
+
 		return redirect('accessDesc');
 	}
 	//Access description view
@@ -28,13 +29,13 @@ class AccessTypeController extends Controller {
 	}
 	// Store the access description and render new view
 	public function storeDesc(Requests\CreateAccTypeRequest $request) {
-		
-		$user = Session::get('userData');// Get userSSO from session var		
+
+		$user = Session::get('userData');// Get userSSO from session var
 		// Insert the request description into request table
 		$id = Request1::create([ 'requestDescription' => $request['accessDescription'] , 'userSSO' => $user ]);
 		Session::put('requestId', $id['requestId']);// Add the requestId to the session variable
 
-		return redirect('accessAcademic'); 
+		return redirect('accessAcademic');
 	}
 
 	// Render the academic career selection
@@ -74,7 +75,7 @@ class AccessTypeController extends Controller {
 		}
 
 		$rId = Session::get('requestId'); // Get requestId from session var
-		// Insert into academic career table 
+		// Insert into academic career table
 		Careers::create([ 'requestId' => $rId , 'ugrd' => $ugrd , 'grad' => $grad , 'med' => $med , 'vetMed' => $vetMed, 'law' => $law ]);
 
 		return redirect('studentRecPrompt');
@@ -87,11 +88,16 @@ class AccessTypeController extends Controller {
 	public function isStudentRecordsAccess(Requests\StudentRecordsPrompt $request) {
 
 		if($request['studentPrompt'] == 'Yes') {
-			return 'ToDO';
+			return redirect('recordAccess');
 		}
 		else if($request['studentPrompt'] == 'No'){
 			return redirect('admissionPrompt');
 		}
+	}
+
+	public function recordAccess()
+	{
+		return view('accessType.recordAccess');
 	}
 
 	public function admissionPrompt(){
@@ -107,5 +113,62 @@ class AccessTypeController extends Controller {
 			return 'ToDo(no)';
 		}
 
+	}
+	public function recordAccessStore(Requests\RecordAccess $request)
+	{
+		$recordTypes = ['basicInquiryView',
+		'advancedInquiryView',
+		'advancedInquiryUpdate',
+		'threeCsView',
+		'threeCsUpdate',
+		'advisorUpdate',
+		'departmentSOCUpdate',
+		'serviceIndicatorsView',
+		'serviceIndicatorsUpdate',
+		'studentGroupView',
+		'studyListView',
+		'registerEnrollmentView',
+		'registerEnrollmentUpdate',
+		'advisorStudentCenterView',
+		'classPermissionView',
+		'classPermissionUpdate',
+		'classRosterView',
+		'blockEnrollmentsView',
+		'blockEnrollmentsUpdate',
+		'reportManagerView',
+		'selfServiceAdvisorUpdate',
+		'fiscalOfficerView',
+		'acadmenicAdvisingProfileUpdate'];
+		$recordTypesValues = array('requestId' => Session::get('requestId'),
+		'basicInquiryView' => false,
+		'advancedInquiryView' => false,
+		'advancedInquiryUpdate' => false,
+		'threeCsView' => false,
+		'threeCsUpdate' => false,
+		'advisorUpdate' => false,
+		'departmentSOCUpdate' => false,
+		'serviceIndicatorsView' => false,
+		'serviceIndicatorsUpdate' => false,
+		'studentGroupView' => false,
+		'studyListView' => false,
+		'registerEnrollmentView' => false,
+		'registerEnrollmentUpdate' => false,
+		'advisorStudentCenterView' => false,
+		'classPermissionView' => false,
+		'classPermissionUpdate' => false,
+		'classRosterView' => false,
+		'blockEnrollmentsView' => false,
+		'blockEnrollmentsUpdate' => false,
+		'reportManagerView' => false,
+		'selfServiceAdvisorUpdate' => false,
+		'fiscalOfficerView' => false,
+		'acadmenicAdvisingProfileUpdate' => false);
+		for ($i=0; $i < count($request['recordAccess']); $i++) {
+			if(in_array($request['recordAccess'][$i], $recordTypes)) {
+				$recordTypesValues[$request['recordAccess'][$i]] = true;
+			}
+		}
+		Records::create($recordTypesValues);
+		return redirect('admissionPrompt');
 	}
 }
