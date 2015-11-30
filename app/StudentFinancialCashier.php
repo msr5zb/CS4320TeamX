@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentFinancialCashier extends Model
 {
+	// Set what table this points towards
+	protected $table = 'student_financial_cashier';
+
 	// Set the primary key
 	protected $primaryKey = 'requestId';
 
