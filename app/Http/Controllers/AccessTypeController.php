@@ -101,11 +101,18 @@ class AccessTypeController extends Controller {
 	public function isAdmissionAccess(Requests\AdmissionPrompt $request){
 
 		if($request['admissionPrompt'] == 'Yes') {
-			return 'ToDO(yes)';
+			return redirect('admissionAccess');
 		}
 		else if($request['admissionPrompt'] == 'No'){
 			return 'ToDo(no)';
 		}
+	}
 
+	public function admissionAccess() {
+		return view('accessType.accessAdmission');
+	}
+
+	public function storeAdmissions(Requests\Admissions $request) {
+		var_dump($request['admissionsAccess']);
 	}
 }
