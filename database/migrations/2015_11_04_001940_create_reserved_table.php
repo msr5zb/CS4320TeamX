@@ -21,7 +21,6 @@ class CreateReservedTable extends Migration
             $table->boolean('transferCreditAdmissionUpdate')->default(0);
             $table->boolean('relationshipsView')->default(0);
             $table->boolean('relationshipsUpdate')->default(0);
-            $table->boolean('studentGroupsView')->default(0);
             $table->boolean('studentGroupsUpdate')->default(0);
             $table->boolean('accommodateSHealthUpdate')->default(0);
             $table->boolean('supportStaffView')->default(0);
