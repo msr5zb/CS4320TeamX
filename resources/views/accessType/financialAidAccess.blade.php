@@ -13,6 +13,7 @@
       <center>Acess Type</center>
     </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Role
@@ -27,6 +28,7 @@
     <center>Update</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     FA Cash
@@ -41,6 +43,7 @@
     <!-- <center>{!! Form::checkbox('fACash', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     FA Non Financial Aid Staff
@@ -55,6 +58,7 @@
     <!-- <center>{!! Form::checkbox('fAnfas[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<br>
 <div class="row">
   <div class="col-md-12">
     {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}
