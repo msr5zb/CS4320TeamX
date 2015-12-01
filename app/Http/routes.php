@@ -44,6 +44,8 @@ Route::post('finanAidPrompt', 'AccessTypeController@isFinanAid');
 
 Route::get('reservedPrompt', 'AccessTypeController@reservedPrompt');
 Route::post('reservedPrompt', 'AccessTypeController@isReserved');
+Route::get('accessReserved', 'AccessTypeController@accessReserved');
+Route::post('accessReserved', 'AccessTypeController@storeReserved');
 
 Route::get('financialAidAccess','AccessTypeController@financialAidAccessShow');
 Route::post('financialAidAccess','AccessTypeController@studentFinancialAidStore');
