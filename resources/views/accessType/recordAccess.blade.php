@@ -10,7 +10,7 @@
 
     </div>
     <div class="col-md-4">
-      <center>Acess Type</center>
+      <center>Access Type</center>
     </div>
 </div>
 <div class="row">
@@ -46,7 +46,7 @@
     Advanced Inquiry
   </div>
   <div class="col-md-4">
-    ncludes Basic Inquiry access. Additionally includes relations with institution, citizenship, visa, decedant data, student enrollment, gpa, term history, 3C's, advisors, student groups
+    Includes Basic Inquiry access. Additionally includes relations with institution, citizenship, visa, decedant data, student enrollment, gpa, term history, 3C's, advisors, student groups
   </div>
   <div class="col-md-2">
     <center>{!! Form::checkbox('advInq[]', 'view', false) !!}</center>
