@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserved extends Model
 {
+	// Tell eloquent what table this points towards
+	protected $table = 'reserved';
+
 	// Set primary Key 
 	protected $primaryKey = 'requestId';
 
@@ -17,6 +20,7 @@ class Reserved extends Model
 
     //allow mass assignment for the following attributes
     protected $fillable = [
+    	'requestId',
     	'immunizationView',
 		'immunizationUpdate',
 		'transferCreditAdmissionView',
