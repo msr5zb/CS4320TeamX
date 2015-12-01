@@ -13,6 +13,7 @@
       <center>Acess Type</center>
     </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Role
@@ -27,6 +28,7 @@
     <center>Update</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Basic Inquiry
@@ -38,9 +40,9 @@
     <center>{!! Form::checkbox('recordAccess[]', 'basicInquiryView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('fACash[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Advanced Inquiry
@@ -55,6 +57,7 @@
     <center>{!! Form::checkbox('recordAccess[]', 'advancedInquiryUpdate', false) !!}</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     3Cs
@@ -77,12 +80,12 @@
     Adding an advisor to a student's record
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('fACash[]', 'view', false) !!}</center> -->
   </div>
   <div class="col-md-2">
       <center>{!! Form::checkbox('recordAccess[]', 'advisorUpdate', false) !!}</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Department SOC Update
@@ -91,12 +94,12 @@
     Scheduling courses, assigning faculty to course, generating permission numbers
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('fACash[]', 'view', false) !!}</center> -->
   </div>
   <div class="col-md-2">
     <center>{!! Form::checkbox('recordAccess[]', 'departmentSOCUpdate', false) !!}</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Service Indicators (Holds)
@@ -111,6 +114,7 @@
     <center>{!! Form::checkbox('recordAccess[]', 'serviceIndicatorsUpdate', false) !!}</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Student Group View
@@ -122,9 +126,9 @@
     <center>{!! Form::checkbox('recordAccess[]', 'studentGroupView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('fACash[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     View Study List
@@ -136,9 +140,9 @@
     <center>{!! Form::checkbox('recordAccess[]', 'studyListView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('fACash[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Registrar Enrollment
@@ -153,6 +157,7 @@
     <center>{!! Form::checkbox('recordAccess[]', 'registerEnrollmentUpdate', false) !!}</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Advisor Student Center
@@ -164,9 +169,9 @@
     <center>{!! Form::checkbox('recordAccess[]', 'advisorStudentCenterView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('advStudentCenter[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Class Permission
@@ -175,12 +180,12 @@
     Creating general or student specific class permission numbers
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('advStudentCenter', 'view', false) !!}</center> -->
   </div>
   <div class="col-md-2">
     <center>{!! Form::checkbox('recordAccess[]', 'classPermissionUpdate', false) !!}</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Class Permission View
@@ -192,9 +197,9 @@
     <center>{!! Form::checkbox('recordAccess[]', 'classPermissionView', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('classPermission', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Class Roster
@@ -205,10 +210,9 @@
   <div class="col-md-2">
     <center>{!! Form::checkbox('recordAccess[]', 'classRosterView', false) !!}</center>
   </div>
-  <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('classPermission', 'update', false) !!}</center> -->
-  </div>
+  <div class="col-md-2"></div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Block Enrollments
@@ -223,6 +227,7 @@
     <center>{!! Form::checkbox('recordAccess[]', 'blockEnrollmentsUpdate', false) !!}</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Report Manager
@@ -237,6 +242,7 @@
     <!-- <center>{!! Form::checkbox('blockEnroll[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Self Service Advisor
@@ -251,6 +257,7 @@
     <center>{!! Form::checkbox('recordAccess[]', 'selfServiceAdvisorUpdate', false) !!}</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Fiscal Officer
@@ -265,6 +272,7 @@
     <!-- <center>{!! Form::checkbox('selfServiceAdvisor', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Academic Advising Profile
@@ -279,7 +287,7 @@
     <center>{!! Form::checkbox('acadmenicAdvisingProfileUpdate', false) !!}</center>
   </div>
 </div>
-
+<br>
 <div class="row">
   <div class="col-md-12">
     {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}
