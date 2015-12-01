@@ -12,9 +12,9 @@ class CreateStudentRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('studentRecords');
-        Schema::create('studentRecords', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
+        Schema::dropIfExists('student_records');
+        Schema::create('student_records', function (Blueprint $table) {
+            $table->integer('requestId')->unsigned();
             $table->boolean('basicInquiryView')->default(0);
             $table->boolean('advancedInquiryView')->default(0);
             $table->boolean('advancedInquiryUpdate')->default(0);
@@ -38,8 +38,8 @@ class CreateStudentRecordsTable extends Migration
             $table->boolean('selfServiceAdvisorUpdate')->default(0);
             $table->boolean('fiscalOfficerView')->default(0);
             $table->boolean('acadmenicAdvisingProfileUpdate')->default(0);
-            $table->foreign('id')->references('id')->on('request');
-            $table->primary('id');
+            $table->foreign('requestId')->references('requestId')->on('request');
+            $table->primary('requestId');
         });
     }
 

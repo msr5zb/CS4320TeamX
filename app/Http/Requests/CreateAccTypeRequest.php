@@ -22,7 +22,7 @@ class CreateAccTypeRequest extends Request {
 	public function rules()
 	{
 		return [
-			'accDesc' => 'required|between:15,100'
+			'accessDescription' => 'required|between:15,100'
 		];
 	}
 

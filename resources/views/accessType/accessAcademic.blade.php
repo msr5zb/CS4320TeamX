@@ -8,19 +8,19 @@
 <div class="form-group">
   <div class="row">
     <div class="col-md-3">
-      {!! Form::radio('selCareer', 'ugrd', false) !!} UGRD
+      {!! Form::checkbox('selectCareer[]', 'ugrd', false) !!} UGRD
     </div>
     <div class="col-md-2">
-      {!! Form::radio('selCareer', 'grad', false) !!} GRAD
+      {!! Form::checkbox('selectCareer[]', 'grad', false) !!} GRAD
     </div>
     <div class="col-md-2">
-      {!! Form::radio('selCareer', 'med', false) !!} MED
+      {!! Form::checkbox('selectCareer[]', 'med', false) !!} MED
     </div>
     <div class="col-md-2">
-      {!! Form::radio('selCareer', 'vetMed', false) !!} VET MED
+      {!! Form::checkbox('selectCareer[]', 'vetmed', false) !!} VET MED
     </div>
     <div class="col-md-3">
-      {!! Form::radio('selCareer', 'law', false) !!} LAW
+      {!! Form::checkbox('selectCareer[]', 'law', false) !!} LAW
     </div>
   </div>
   <div class="row">

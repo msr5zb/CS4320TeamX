@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class SelectAcademicCareer extends Request {
+class StudentFinancialAid extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class SelectAcademicCareer extends Request {
 	public function rules()
 	{
 		return [
-			//
-			'selectCareer' => 'required'
+			'cashView',
+			'nonFinancialAidStaff'
 		];
 	}
 

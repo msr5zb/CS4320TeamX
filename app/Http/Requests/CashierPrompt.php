@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class SelectAcademicCareer extends Request {
+class CashierPrompt extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -23,7 +23,6 @@ class SelectAcademicCareer extends Request {
 	{
 		return [
 			//
-			'selectCareer' => 'required'
 		];
 	}
 
