@@ -11,6 +11,7 @@ use App\StudentRecords as Records;
 use App\Admissions as Admissions;
 use App\StudentFinancialAid as StudentFinancialAid;
 use App\StudentFinancialCashier as Cashier;
+use App\Reserved as Reserved;
 
 class AccessTypeController extends Controller {
 
@@ -157,7 +158,7 @@ class AccessTypeController extends Controller {
 	public function isReserved(Requests\ReservedPrompt $request){
 
 		if($request['reservedPrompt'] == 'Yes') {
-			return 'ToDo(yes)';
+			return redirect('accessReserved');
 		}
 		else if($request['reservedPrompt'] == 'No'){
 			return 'ToDo(no)';
@@ -185,6 +186,12 @@ class AccessTypeController extends Controller {
 
 		return view('accessType.financialAidAccess');
 	}
+
+	// View for reserved access request
+	public function accessReserved() {
+		return view('accessType.accessReserved');
+	}
+
 
 	// Store student records request into DB
 	public function recordAccessStore(Requests\RecordAccess $request) {
@@ -388,5 +395,73 @@ class AccessTypeController extends Controller {
 		}
 		StudentFinancialAid::create($dbFiledsValues);
 		return redirect('reservedPrompt');
+	}
+
+	// Store reserved access request into DB
+	public function storeReserved(Requests\Reserved $request){
+		
+		$immView = false;
+		$immUpdate = false;
+		$tcaView = false;
+		$tcaUpdate = false;
+		$relView = false;
+		$relUpdate = false;
+		$stGrpUpdate = false;
+		$stHealthUpdate = false;
+		$regOffView = false;
+		$regOffUpdate = false;
+		$asrView = false;
+		$asrUpdate = false;
+
+		// Get request input
+		$inRes = $request['accessReserved'];
+
+		// Determin Validity
+		foreach($inRes as $s){
+			if($s == 'immunizationview'){
+				$immView = true;
+			}
+			else if($s == 'immunizationupdate'){
+				$immUpdate = true;
+			}
+			else if($s == 'tcaview'){
+				$tcaView = true;
+			}
+			else if($s == 'tcaupdate'){
+				$tcaUpdate = true;
+			}
+			else if($s == 'relationshipsview'){
+				$relView = true;
+			}
+			else if($s == 'relationshipsupdate'){
+				$relUpdate = true;
+			}
+			else if($s == 'studentgroupsupate'){
+				$stGrpUpdate =true;
+			}
+			else if($s == 'shealthupdate'){
+				$stHealthUpdate = true;
+			}
+			else if($s == 'regoffview'){
+				$regOffView = true;
+			}
+			else if($s == 'regoffupdate' ){
+				$regOffUpdate = true;
+			}
+			else if($s == 'asrview'){
+				$asrView = true;
+			}
+			else if($s == 'asrUpdate'){
+				$asrUpdate = true;
+			}
+		}
+
+		// Get requestId for this request
+		$inR = Session::get('requestId');
+
+		//Create a row in the Reserved table
+		Reserved::create(['requestId' => $inR , 'immunizationView' => $immView , 'immunizationUpdate' => $immUpdate , 'transferCreditAdmissionView' => $tcaView , 'transferCreditAdmissionUpdate' => $tcaUpdate , 'relationshipsView' => $relView , 'relationshipsUpdate' => $relUpdate , 'studentGroupsUpdate' => $stGrpUpdate , 'accommodateSHealthUpdate' => $stHealthUpdate , 'supportStaffView' => $regOffView , 'supportStaffUpdate' => $regOffUpdate , 'advanceStandingReportView' => $asrView , 'advanceStandingReportUpdate' => $asrUpdate ]);
+
+		return 'success';	
 	}
 }
