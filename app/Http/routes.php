@@ -36,6 +36,8 @@ Route::post('admissionAccess', 'AccessTypeController@storeAdmissions');
 
 Route::get('finanCashierPrompt', 'AccessTypeController@finanCashierPrompt');
 Route::post('finanCashierPrompt', 'AccessTypeController@isFinanCashier');
+Route::get('finanCashier', 'AccessTypeController@finanCashier');
+Route::post('finanCashier', 'AccessTypeController@storeCashier');
 
 Route::get('finanAidPrompt', 'AccessTypeController@finanAidPrompt');
 Route::post('finanAidPrompt', 'AccessTypeController@isFinanAid');
