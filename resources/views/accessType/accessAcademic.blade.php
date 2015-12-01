@@ -23,6 +23,7 @@
       {!! Form::checkbox('selectCareer[]', 'law', false) !!} LAW
     </div>
   </div>
+  <br>
   <div class="row">
     <div class="col-md-12">
       {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}
