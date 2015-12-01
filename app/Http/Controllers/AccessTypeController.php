@@ -87,6 +87,27 @@ class AccessTypeController extends Controller {
 	public function studentRecPrompt() {
 		return view('accessType.accessPrompt.studentRecordsPrompt');
 	}
+
+	// Admission request prompt
+	public function admissionPrompt(){
+		return view('accessType.accessPrompt.admissionPrompt');
+	}
+
+	// Student Financial Cashier request prompt
+	public function finanCashierPrompt(){
+		return view('accessType.accessPrompt.finanCashierPrompt');
+	}
+
+	// Student Financial Aid request prompt
+	public function finanAidPrompt() {
+		return view('accessType.accessPrompt.finanAidPrompt');
+	}
+
+	// Reserved request prompt
+	public function reservedPrompt(){
+		return view('accessType.accessPrompt.reservedPrompt');
+	}
+
 	// Check student records prompt
 	public function isStudentRecordsAccess(Requests\StudentRecordsPrompt $request) {
 
@@ -98,15 +119,6 @@ class AccessTypeController extends Controller {
 		}
 	}
 
-	public function recordAccess()
-	{
-		return view('accessType.recordAccess');
-	}
-
-	// Admission request prompt
-	public function admissionPrompt(){
-		return view('accessType.accessPrompt.admissionPrompt');
-	}
 	// Check admission prompt
 	public function isAdmissionAccess(Requests\AdmissionPrompt $request){
 
@@ -117,11 +129,122 @@ class AccessTypeController extends Controller {
 			return redirect('finanCashierPrompt');
 		}
 	}
+
+	// Check sfCashier prompt
+	public function isFinanCashier(Requests\CashierPrompt $request) {
+
+		if($request['cashierPrompt'] == 'Yes') {
+			return redirect('finanCashier');
+		}
+		else if($request['cashierPrompt'] == 'No'){
+			return redirect('finanAidPrompt');
+		}
+	}
+
+	// Check sfAid prompt
+	public function isFinanAid(Requests\AidPrompt $request){
+
+		if($request['aidPrompt'] == 'Yes') {
+			return redirect('financialAidAccess');
+		}
+		else if($request['aidPrompt'] == 'No'){
+			return redirect('reservedPrompt');
+		}
+	}
+
+	// Check reserved prompt
+	public function isReserved(Requests\ReservedPrompt $request){
+
+		if($request['reservedPrompt'] == 'Yes') {
+			return 'ToDo(yes)';
+		}
+		else if($request['reservedPrompt'] == 'No'){
+			return 'ToDo(no)';
+		}
+	}
+
+	// View for student records access request
+	public function recordAccess()
+	{
+		return view('accessType.recordAccess');
+	}
+
 	// View for admission access request
 	public function admissionAccess() {
 		return view('accessType.accessAdmission');
 	}
 
+	// View for sfCashier access request
+	public function finanCashier(){
+		return view('accessType.financialAccess');
+	}
+
+	// View for sfAid access request
+	public function financialAidAccessShow()
+	{
+		return view('accessType.financialAidAccess');
+	}
+
+	// Store student records request into DB
+	public function recordAccessStore(Requests\RecordAccess $request)
+	{
+		$recordTypes = ['basicInquiryView',
+		'advancedInquiryView',
+		'advancedInquiryUpdate',
+		'threeCsView',
+		'threeCsUpdate',
+		'advisorUpdate',
+		'departmentSOCUpdate',
+		'serviceIndicatorsView',
+		'serviceIndicatorsUpdate',
+		'studentGroupView',
+		'studyListView',
+		'registerEnrollmentView',
+		'registerEnrollmentUpdate',
+		'advisorStudentCenterView',
+		'classPermissionView',
+		'classPermissionUpdate',
+		'classRosterView',
+		'blockEnrollmentsView',
+		'blockEnrollmentsUpdate',
+		'reportManagerView',
+		'selfServiceAdvisorUpdate',
+		'fiscalOfficerView',
+		'acadmenicAdvisingProfileUpdate'];
+		$recordTypesValues = array('requestId' => Session::get('requestId'),
+		'basicInquiryView' => false,
+		'advancedInquiryView' => false,
+		'advancedInquiryUpdate' => false,
+		'threeCsView' => false,
+		'threeCsUpdate' => false,
+		'advisorUpdate' => false,
+		'departmentSOCUpdate' => false,
+		'serviceIndicatorsView' => false,
+		'serviceIndicatorsUpdate' => false,
+		'studentGroupView' => false,
+		'studyListView' => false,
+		'registerEnrollmentView' => false,
+		'registerEnrollmentUpdate' => false,
+		'advisorStudentCenterView' => false,
+		'classPermissionView' => false,
+		'classPermissionUpdate' => false,
+		'classRosterView' => false,
+		'blockEnrollmentsView' => false,
+		'blockEnrollmentsUpdate' => false,
+		'reportManagerView' => false,
+		'selfServiceAdvisorUpdate' => false,
+		'fiscalOfficerView' => false,
+		'acadmenicAdvisingProfileUpdate' => false);
+		for ($i=0; $i < count($request['recordAccess']); $i++) {
+			if(in_array($request['recordAccess'][$i], $recordTypes)) {
+				$recordTypesValues[$request['recordAccess'][$i]] = true;
+			}
+		}
+		Records::create($recordTypesValues);
+		return redirect('admissionPrompt');
+	}
+
+	// Store admissions request in DB
 	public function storeAdmissions(Requests\Admissions $request) {
 
 		// Set all variable to false
@@ -215,100 +338,9 @@ class AccessTypeController extends Controller {
 		Admissions::create(['requestId' => $rId , 'act' => $act , 'sat' => $sat , 'gre' => $gre , 'gmat' => $gmat , 'tofel' => $tofel , 'ielts' => $ielts , 'lsat' => $lsat , 'mcat' => $mcat , 'ap' => $ap , 'clep' => $clep , 'ged' => $ged , 'millers' => $millers , 'prax' => $prax , 'plamu' => $pla_mu , 'base' => $base ]);
 
 		return redirect('finanCashierPrompt');
-
-	}
-	public function recordAccessStore(Requests\RecordAccess $request)
-	{
-		$recordTypes = ['basicInquiryView',
-		'advancedInquiryView',
-		'advancedInquiryUpdate',
-		'threeCsView',
-		'threeCsUpdate',
-		'advisorUpdate',
-		'departmentSOCUpdate',
-		'serviceIndicatorsView',
-		'serviceIndicatorsUpdate',
-		'studentGroupView',
-		'studyListView',
-		'registerEnrollmentView',
-		'registerEnrollmentUpdate',
-		'advisorStudentCenterView',
-		'classPermissionView',
-		'classPermissionUpdate',
-		'classRosterView',
-		'blockEnrollmentsView',
-		'blockEnrollmentsUpdate',
-		'reportManagerView',
-		'selfServiceAdvisorUpdate',
-		'fiscalOfficerView',
-		'acadmenicAdvisingProfileUpdate'];
-		$recordTypesValues = array('requestId' => Session::get('requestId'),
-		'basicInquiryView' => false,
-		'advancedInquiryView' => false,
-		'advancedInquiryUpdate' => false,
-		'threeCsView' => false,
-		'threeCsUpdate' => false,
-		'advisorUpdate' => false,
-		'departmentSOCUpdate' => false,
-		'serviceIndicatorsView' => false,
-		'serviceIndicatorsUpdate' => false,
-		'studentGroupView' => false,
-		'studyListView' => false,
-		'registerEnrollmentView' => false,
-		'registerEnrollmentUpdate' => false,
-		'advisorStudentCenterView' => false,
-		'classPermissionView' => false,
-		'classPermissionUpdate' => false,
-		'classRosterView' => false,
-		'blockEnrollmentsView' => false,
-		'blockEnrollmentsUpdate' => false,
-		'reportManagerView' => false,
-		'selfServiceAdvisorUpdate' => false,
-		'fiscalOfficerView' => false,
-		'acadmenicAdvisingProfileUpdate' => false);
-		for ($i=0; $i < count($request['recordAccess']); $i++) {
-			if(in_array($request['recordAccess'][$i], $recordTypes)) {
-				$recordTypesValues[$request['recordAccess'][$i]] = true;
-			}
-		}
-		Records::create($recordTypesValues);
-		return redirect('admissionPrompt');
 	}
 
-	public function finanCashierPrompt(){
-		return view('accessType.accessPrompt.finanCashierPrompt');
-	}
-
-	public function financialAidAccessShow()
-	{
-		return view('accessType.financialAidAccess');
-	}
-
-	public function studentFinancialAidStore(Requests\StudentFinancialAid $request)
-	{
-		$dbFileds = [
-			'requestId',
-			'cashView',
-			'nonFinancialAidStaff'
-		];
-		$dbFiledsValues = [
-			'requestId' =>  Session::get('requestId'),
-			'cashView' => false,
-			'nonFinancialAidStaff' => false
-		];
-		for ($i=0; $i < count($request['fACash']); $i++) {
-			if(in_array($request['fACash'][$i], $dbFileds)) {
-				$dbFiledsValues[$request['fACash'][$i]] = true;
-			}
-		}
-		StudentFinancialAid::create($dbFiledsValues);
-		return redirect('reservedPrompt');
-	}
-
-	public function finanCashier(){
-		return view('accessType.financialAccess');
-	}
-
+	// Store sfCashier into DB
 	public function storeCashier(Requests\StudentFinancialCashier $request){
 
 		$genInView = false;
@@ -335,42 +367,26 @@ class AccessTypeController extends Controller {
 		return redirect('finanAidPrompt');
 
 	}
-
-	public function isFinanCashier(Requests\CashierPrompt $request) {
-
-		if($request['cashierPrompt'] == 'Yes') {
-			return redirect('finanCashier');
+	
+	// Store sfAid into DB
+	public function studentFinancialAidStore(Requests\StudentFinancialAid $request)
+	{
+		$dbFileds = [
+			'requestId',
+			'cashView',
+			'nonFinancialAidStaff'
+		];
+		$dbFiledsValues = [
+			'requestId' =>  Session::get('requestId'),
+			'cashView' => false,
+			'nonFinancialAidStaff' => false
+		];
+		for ($i=0; $i < count($request['fACash']); $i++) {
+			if(in_array($request['fACash'][$i], $dbFileds)) {
+				$dbFiledsValues[$request['fACash'][$i]] = true;
+			}
 		}
-		else if($request['cashierPrompt'] == 'No'){
-			return redirect('finanAidPrompt');
-		}
-	}
-
-	public function finanAidPrompt() {
-		return view('accessType.accessPrompt.finanAidPrompt');
-	}
-
-	public function isFinanAid(Requests\AidPrompt $request){
-
-		if($request['aidPrompt'] == 'Yes') {
-			return redirect('financialAidAccess');
-		}
-		else if($request['aidPrompt'] == 'No'){
-			return redirect('reservedPrompt');
-		}
-	}
-
-	public function reservedPrompt(){
-		return view('accessType.accessPrompt.reservedPrompt');
-	}
-
-	public function isReserved(Requests\ReservedPrompt $request){
-
-		if($request['reservedPrompt'] == 'Yes') {
-			return 'ToDo(yes)';
-		}
-		else if($request['reservedPrompt'] == 'No'){
-			return 'ToDo(no)';
-		}
+		StudentFinancialAid::create($dbFiledsValues);
+		return redirect('reservedPrompt');
 	}
 }
