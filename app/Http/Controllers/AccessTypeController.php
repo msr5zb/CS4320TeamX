@@ -83,6 +83,7 @@ class AccessTypeController extends Controller {
 
 		return redirect('studentRecPrompt');
 	}
+
 	// Student record prompt
 	public function studentRecPrompt() {
 		return view('accessType.accessPrompt.studentRecordsPrompt');
@@ -163,7 +164,7 @@ class AccessTypeController extends Controller {
 		}
 	}
 
-	// View for student records access request
+	// View for student records access request 
 	public function recordAccess()
 	{
 		return view('accessType.recordAccess');
@@ -180,14 +181,14 @@ class AccessTypeController extends Controller {
 	}
 
 	// View for sfAid access request
-	public function financialAidAccessShow()
-	{
+	public function financialAidAccessShow() {
+
 		return view('accessType.financialAidAccess');
 	}
 
 	// Store student records request into DB
-	public function recordAccessStore(Requests\RecordAccess $request)
-	{
+	public function recordAccessStore(Requests\RecordAccess $request) {
+
 		$recordTypes = ['basicInquiryView',
 		'advancedInquiryView',
 		'advancedInquiryUpdate',
@@ -340,7 +341,7 @@ class AccessTypeController extends Controller {
 		return redirect('finanCashierPrompt');
 	}
 
-	// Store sfCashier into DB
+	// Store student financial cashier request into DB
 	public function storeCashier(Requests\StudentFinancialCashier $request){
 
 		$genInView = false;
@@ -367,10 +368,9 @@ class AccessTypeController extends Controller {
 		return redirect('finanAidPrompt');
 
 	}
-	
-	// Store sfAid into DB
-	public function studentFinancialAidStore(Requests\StudentFinancialAid $request)
-	{
+
+	// Store student financial aid request into DB
+	public function studentFinancialAidStore(Requests\StudentFinancialAid $request) {
 		$dbFileds = [
 			'requestId',
 			'cashView',
