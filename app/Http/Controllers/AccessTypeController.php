@@ -10,6 +10,7 @@ use App\AcademicCareers as Careers;
 use App\StudentRecords as Records;
 use App\Admissions as Admissions;
 use App\StudentFinancialAid as StudentFinancialAid;
+use App\StudentFinancialCashier as Cashier;
 
 class AccessTypeController extends Controller {
 
@@ -289,25 +290,56 @@ class AccessTypeController extends Controller {
 			'requestId',
 			'cashView',
 			'nonFinancialAidStaff'
-	];
-	$dbFiledsValues = [
-		'requestId' =>  Session::get('requestId'),
-		'cashView' => false,
-		'nonFinancialAidStaff' => false
-	];
-	for ($i=0; $i < count($request['fACash']); $i++) {
-		if(in_array($request['fACash'][$i], $dbFileds)) {
-			$dbFiledsValues[$request['fACash'][$i]] = true;
+		];
+		$dbFiledsValues = [
+			'requestId' =>  Session::get('requestId'),
+			'cashView' => false,
+			'nonFinancialAidStaff' => false
+		];
+		for ($i=0; $i < count($request['fACash']); $i++) {
+			if(in_array($request['fACash'][$i], $dbFileds)) {
+				$dbFiledsValues[$request['fACash'][$i]] = true;
+			}
 		}
+		StudentFinancialAid::create($dbFiledsValues);
+		return redirect('reservedPrompt');
 	}
-	StudentFinancialAid::create($dbFiledsValues);
-	return redirect('reservedPrompt');
+
+	public function finanCashier(){
+		return view('accessType.financialAccess');
+	}
+
+	public function storeCashier(Requests\StudentFinancialCashier $request){
+
+		$genInView = false;
+		$cashGrpView = false;
+		$cashGrpUpdate = false;
+
+		$inC = $request['sfCash'];
+
+		foreach($inC as $s){
+			if($s == 'generalinview'){
+				$genInView = true;
+			}
+			else if($s == 'cashgrpview'){
+				$cashGrpView = true;
+			}
+			else if($s == 'cashgrpupdate'){
+				$cashGrpUpdate = true;
+			}
+		}
+
+		$inR = Session::get('requestId');
+
+		Cashier::create(['requestId' => $inR, 'generalInquiryView' => $genInView, 'cashGroupPostView' => $cashGrpView, 'cashGroupPostUpdate' => $cashGrpUpdate]);
+		return redirect('finanAidPrompt');
+
 	}
 
 	public function isFinanCashier(Requests\CashierPrompt $request) {
 
 		if($request['cashierPrompt'] == 'Yes') {
-			return 'ToDo(yes)';
+			return redirect('finanCashier');
 		}
 		else if($request['cashierPrompt'] == 'No'){
 			return redirect('finanAidPrompt');
