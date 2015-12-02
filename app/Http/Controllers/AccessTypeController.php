@@ -254,6 +254,10 @@ class AccessTypeController extends Controller {
 			}
 		}
 		Records::create($recordTypesValues);
+
+		$fInfo = FormInfo::find($recordTypesValues['requestId']);
+		$fInfo->update(['studentRecords' => true]);
+
 		return redirect('admissionPrompt');
 	}
 
@@ -350,6 +354,9 @@ class AccessTypeController extends Controller {
 		// Insert into admissions table
 		Admissions::create(['requestId' => $rId , 'act' => $act , 'sat' => $sat , 'gre' => $gre , 'gmat' => $gmat , 'tofel' => $tofel , 'ielts' => $ielts , 'lsat' => $lsat , 'mcat' => $mcat , 'ap' => $ap , 'clep' => $clep , 'ged' => $ged , 'millers' => $millers , 'prax' => $prax , 'plamu' => $pla_mu , 'base' => $base ]);
 
+		$fInfo = FormInfo::find($rId);
+		$fInfo->update(['admissions' => true]);
+
 		return redirect('finanCashierPrompt');
 	}
 
@@ -377,6 +384,10 @@ class AccessTypeController extends Controller {
 		$inR = Session::get('requestId');
 
 		Cashier::create(['requestId' => $inR, 'generalInquiryView' => $genInView, 'cashGroupPostView' => $cashGrpView, 'cashGroupPostUpdate' => $cashGrpUpdate]);
+		
+		$fInfo = FormInfo::find($inR);
+		$fInfo->update(['finanCashier' => true]);
+
 		return redirect('finanAidPrompt');
 
 	}
@@ -399,6 +410,10 @@ class AccessTypeController extends Controller {
 			}
 		}
 		StudentFinancialAid::create($dbFiledsValues);
+
+		$fInfo = FormInfo::find($dbFiledsValues['requestId']);
+		$fInfo->update(['finanAid' => true]);
+
 		return redirect('reservedPrompt');
 	}
 
@@ -467,6 +482,9 @@ class AccessTypeController extends Controller {
 		//Create a row in the Reserved table
 		Reserved::create(['requestId' => $inR , 'immunizationView' => $immView , 'immunizationUpdate' => $immUpdate , 'transferCreditAdmissionView' => $tcaView , 'transferCreditAdmissionUpdate' => $tcaUpdate , 'relationshipsView' => $relView , 'relationshipsUpdate' => $relUpdate , 'studentGroupsUpdate' => $stGrpUpdate , 'accommodateSHealthUpdate' => $stHealthUpdate , 'supportStaffView' => $regOffView , 'supportStaffUpdate' => $regOffUpdate , 'advanceStandingReportView' => $asrView , 'advanceStandingReportUpdate' => $asrUpdate ]);
 
-		return 'success';	
+		$fInfo = FormInfo::find($inR);
+		$fInfo->update(['reserved' => true]);
+
+		return redirect('home');	
 	}
 }
