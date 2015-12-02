@@ -12,6 +12,8 @@ use App\Admissions as Admissions;
 use App\StudentFinancialAid as StudentFinancialAid;
 use App\StudentFinancialCashier as Cashier;
 use App\Reserved as Reserved;
+use App\About as About;
+use App\FormInfo as FormInfo;
 
 class AccessTypeController extends Controller {
 
@@ -21,9 +23,11 @@ class AccessTypeController extends Controller {
 	}
 	//validate the ferpa score request and store in DB
 	public function updateFScore(Requests\UpdatefScoreRequest $request) {
-		// This needs to change...for security reasons...we should never access/update user table after login
-		$user = \Auth::user();
-		$user->update(['ferpaScore' => $request['Score']]);
+		
+		$user = Session::get('userData');
+
+		About::create(['userSSO' => $user , 'ferpaScore' => $request['Score'] ]);
+		//$user->update(['ferpaScore' => $request['Score']]);
 
 		return redirect('accessDesc');
 	}
@@ -38,6 +42,7 @@ class AccessTypeController extends Controller {
 		// Insert the request description into request table
 		$id = Request1::create([ 'requestDescription' => $request['accessDescription'] , 'userSSO' => $user ]);
 		Session::put('requestId', $id['requestId']);// Add the requestId to the session variable
+		FormInfo::create(['requestId' => $id['requestId']]);
 
 		return redirect('accessAcademic');
 	}
