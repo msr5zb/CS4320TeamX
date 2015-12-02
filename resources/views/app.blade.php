@@ -8,9 +8,17 @@
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/docs.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/tableStyles.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="{{ asset('/libs/jspdf.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/libs/html2canvas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/libs/addimage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/libs/jquery-1.11.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/libs/jspdf.debug.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/pdfHandler.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/previewpdfHandler.js') }}"></script>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,7 +39,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">AccessZou</a>
+				<a class="navbar-brand" href="{{ url('/') }}">AccessZou</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -46,7 +54,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a tabindex="-1" href="{{url('/testScore')}}">Create New Form</a></li>
-                                <li><a tabindex="-1" href="{{url('/') }}">View Forms</a></li>
+                                <li><a tabindex="-1" href="{{url('/viewForms') }}">View Forms</a></li>
                             </ul>
                         </li>                    
 					@endif

@@ -50,6 +50,8 @@ Route::post('accessReserved', 'AccessTypeController@storeReserved');
 Route::get('financialAidAccess','AccessTypeController@financialAidAccessShow');
 Route::post('financialAidAccess','AccessTypeController@studentFinancialAidStore');
 
+Route::get('viewForms','ViewFormsController@index');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
