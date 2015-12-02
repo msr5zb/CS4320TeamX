@@ -14,7 +14,6 @@ class UserTableSeeder extends Seeder {
           'title' => 'Cheif Database Bro',
           'address' => '303 Foxfire Drive',
 		  //'admin' => TRUE,
-          'ferpaScore' => 10,
           'employeeId' => 124123,
           'password' => bcrypt("password"),
         ] );
@@ -25,7 +24,6 @@ class UserTableSeeder extends Seeder {
           'lname' => 'Hryszko',
           'title' => 'Ms.',
           'address' => '98 East Avenue',
-          'ferpaScore' => 69,
           'employeeId' => 282828,
           'password' => bcrypt("password"),
         ] );
@@ -37,7 +35,6 @@ class UserTableSeeder extends Seeder {
           'title' => 'What?',
           'address' => '123 Columbia Street',
 		  //'admin' => TRUE,
-          'ferpaScore' => 43,
           'employeeId' => 234252,
           'password' => bcrypt("password"),
         ] );
@@ -48,7 +45,6 @@ class UserTableSeeder extends Seeder {
           'lname' => 'Minerd',
           'title' => 'Slacker',
           'address' => '763 Road',
-          'ferpaScore' => 97,
           'employeeId' => 827423,
           'password' => bcrypt("password"),
         ] );
@@ -60,7 +56,6 @@ class UserTableSeeder extends Seeder {
           'title' => 'Hacker',
           'address' => '762 Road',
 		  //'admin' => TRUE,
-          'ferpaScore' => 01,
           'employeeId' => 827371,
           'password' => bcrypt("password"),
         ] );
@@ -71,7 +66,6 @@ class UserTableSeeder extends Seeder {
           'lname' => 'I Cant Spell It',
           'title' => 'Head Programmer of Stuff',
           'address' => '761 Road',
-          'ferpaScore' => 00,
           'employeeId' => 918242,
           'password' => bcrypt("password"),
         ] );
