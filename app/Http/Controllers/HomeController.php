@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Session;
-
+use App\About as About;
 class HomeController extends Controller {
 
 	/*
@@ -34,8 +34,12 @@ class HomeController extends Controller {
 	{
 		$user = \Auth::user(); // Added userSSO to session var
 		Session::put('userData', $user->userSSO);
-		
-		return view('home');
+		$ferpaScore = About::select('ferpaScore')->where('userSSO', Session::get('userData'))->get();
+		if(count($ferpaScore) != 0){
+			return view('home')->with('showValue', 'show');
+		} else {
+			return view('home')->with('showValue', 'hidden');
+		}
 	}
 
 }
