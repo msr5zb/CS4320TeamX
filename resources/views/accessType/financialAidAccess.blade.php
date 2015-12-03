@@ -13,6 +13,7 @@
       <center>Acess Type</center>
     </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Role
@@ -27,6 +28,7 @@
     <center>Update</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     FA Cash
@@ -35,12 +37,13 @@
     View a student's financial aid awards and budget
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('fACash', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('fACash[]', 'cashView', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('fACash', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     FA Non Financial Aid Staff
@@ -49,12 +52,13 @@
     Also known as "Cost Centers" (for areas that want to apply charges)
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('fAnfas', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('fACash[]', 'nonFinancialAidStaff', false) !!}</center>
   </div>
   <div class="col-md-2">
     <!-- <center>{!! Form::checkbox('fAnfas[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<br>
 <div class="row">
   <div class="col-md-12">
     {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}

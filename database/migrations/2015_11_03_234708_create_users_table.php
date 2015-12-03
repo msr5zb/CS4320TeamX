@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('title', 25);
             $table->string('address', 40);
 			//$table->boolean('admin')->default(FALSE);
-            $table->smallInteger('ferpaScore');
             $table->integer('employeeId');
             $table->string('password', 60);
             $table->rememberToken();

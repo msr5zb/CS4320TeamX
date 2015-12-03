@@ -12,14 +12,14 @@ class CreateStudentFinancialCashierTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('studentFinancialCashier');
-        Schema::create('studentFinancialCashier', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
+        Schema::dropIfExists('student_financial_cashier');
+        Schema::create('student_financial_cashier', function (Blueprint $table) {
+            $table->integer('requestId')->unsigned();
             $table->boolean('generalInquiryView')->default(0);
             $table->boolean('cashGroupPostView')->default(0);
             $table->boolean('cashGroupPostUpdate')->default(0);
-            $table->foreign('id')->references('id')->on('request');
-            $table->primary('id');
+            $table->foreign('requestId')->references('requestId')->on('request');
+            $table->primary('requestId');
         });
     }
 

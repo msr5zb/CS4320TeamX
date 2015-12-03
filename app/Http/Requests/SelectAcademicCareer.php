@@ -23,7 +23,7 @@ class SelectAcademicCareer extends Request {
 	{
 		return [
 			//
-			'selCareer' => 'required'
+			'selectCareer' => 'required'
 		];
 	}
 
