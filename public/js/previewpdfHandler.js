@@ -1,6 +1,95 @@
-        function showPreview() {
+        function showPreview(
+        $requestId,
+        $fname,
+        $lname,
+        $userSSO,
+        $title,
+        $employeeId,
+        $address,
+        $requestDescription,
+        $ferpaScore,
+        
+        $ugrd,
+        $grad,
+        $med,
+        $vetMed,
+        $law,
+            
+        $basicInquiryView,
+        $advancedInquiryView,
+        $advancedInquiryUpdate,
+        $threeCsView,
+        $threeCsUpdate,
+        $advisorUpdate,
+        $departmentSOCUpdate,
+        $serviceIndicatorsView,
+        $serviceIndicatorsUpdate,
+        $studentGroupView,
+        $studyListView,
+        $registerEnrollmentView,
+        $registerEnrollmentUpdate,
+        $advisorStudentCenterView,
+        $classPermissionView,
+        $classPermissionUpdate,
+        $classRosterView,
+        $blockEnrollmentsView,
+        $blockEnrollmentsUpdate,
+        $reportManagerView,
+        $selfServiceAdvisorUpdate,
+        $fiscalOfficerView,
+        $acadmenicAdvisingProfileUpdate,
+        
+        $act,
+        $sat,
+        $gre,
+        $gmat,
+        $tofel,
+        $ielts,
+        $lsat,
+        $mcat,
+        $ap,
+        $clep,
+        $ged,
+        $millers,
+        $prax,
+        $plamu,
+        $base,
+        
+        $generalInquiryView,
+        $cashGroupPostView,
+        $cashGroupPostUpdate,
+        
+        $cashView,
+        $nonFinancialAidStaff,
+        
+        $immunizationView,
+        $immunizationUpdate,
+        $transferCreditAdmissionView,
+        $transferCreditAdmissionUpdate,
+        $relationshipsView,
+        $relationshipsUpdate,
+        $studentGroupsUpdate,
+        $accommodateSHealthUpdate,
+        $supportStaffView,
+        $supportStaffUpdate,
+        $advanceStandingReportView,
+        $advanceStandingReportUpdate
+
+            
+
+
+) {
+            
+                //Note to Self, (Rallo), make statements for if a value = 't', value = "true" or itself....
+            
+             function convertMeTrueFalse(a)
+             {
+               a = typeof a !== 'false' ? a : 'true';
+             }
+
            
             document.getElementById("previewPane").style.visibility = "visible";
+            document.getElementById("downloadPDFbutton").style.visibility = "visible";
             
             $("#content").html(''
             + '<div class="container" style="width:50%;">'
@@ -12,31 +101,31 @@
             + '<form class="form-inline" role="form">'
             + '<div class="form-group">'
             + '<label for="usr">* Name:</label>'
-            + 'Kara Hryszko'
+            + $fname + ' ' + $lname
             + '</div>'
             + '<div class="form-group">'
             + '<label for="pwprt">* PawPrint/SSO:</label>'
-            + 'kgh458'
+            + $userSSO 
             + '</div>'
             + '<div class="form-group">'
             + '<label for="title">* Title:</label>'
-            + 'Ms.'
+            + $title 
             + '</div>'
             + '<div class="form-group">'
             + '<label for="dept">* Department:</label>'
-            + '123 something St.'
+            + 'INSERT DEPARTMENT HERE!'
             + '</div>'
             + '<div class="form-group">'
             + '<label for="empID">* Employee ID:</label>'
-            + '1234123123'
+            + $employeeId
             + '</div>'
             + '<div class="form-group">'
             + '<label for="cpaddr">* Campus Address:</label>'
-            + '4522 Don\'t know where ln.'
+            + $address 
             + '</div>'
             + '<div class="form-inline">'
             + '<label for="phnum">* Phone Number:</label>'
-            + '773-202-2341'
+            + 'INSERT PHONE NUMBER HERE!'
             + '</div>'
             + '</form>'
             + '</div>'
@@ -49,7 +138,7 @@
             + '<form role="form">'
             + '<div class="form-group" style="padding:25">'
             + '<p style="padding-top:10px">* Please describe the type of access needed (i.e. view student name, address, rosters, etc.). Please be specific.</p>'
-            + '<i>This is what I wrote.</i>'
+            + $requestDescription
             + '</div>'
             + '</form>'
             + '</div>'
@@ -60,7 +149,7 @@
             + '<p style="padding-right:25px">A passing score of 85% on the FERPA Quiz is required before access to student data is approved. Access to the FERPA tutorial and the FERPA quiz can be done at <link>http://myzoutraining.missouri.edu/ferpareq.php</link>.</p>'
             + '</div>'
             + '<div class="form-inline">'
-            + '<label for="usr">* FERPA Score: </label><i>87</i>'
+            + '<label for="usr">* FERPA Score: </label><i>' + $ferpaScore + '</i>'
             + '</div>'
             + '</div>'
             + ''
@@ -73,7 +162,7 @@
             + '<b>,</b>'
             + '<i>GRAD</i>'
             + '<b>,</b>'
-            + '<i>VET MED  </i>'
+            + '<i></i>'
             + '</form>'
             + '</div>'
             + '</div>'
