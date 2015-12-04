@@ -25,7 +25,9 @@ class ViewFormsController extends Controller {
 	 */
 	public function index()
 	{
-		$requests = Requestz::select('request') 
+        $user = \Auth::user(); // Added userSSO to session var
+		
+		$requests = DB::table('request')->where('request.userSSO', '=', $user->userSSO) 
            ->join('about', 'request.userSSO', '=', 'about.userSSO')
            ->join('users', 'request.userSSO', '=', 'users.userSSO')
            ->join('academic_careers', 'request.requestId', '=', 'academic_careers.requestId')

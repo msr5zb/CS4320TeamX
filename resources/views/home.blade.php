@@ -5,7 +5,7 @@
 <!--Tutorial Section! -->
 
 
-<div class="panel-heading"><h1>Welcome, {{ Auth::user()->userSSO }}</h1></div>
+<div class="panel-heading"><h1>Welcome, {{ Auth::user()->fname }} {{ Auth::user()->lname }}</h1></div>
     <div class="panel-body">
         <div id="siteTutContainer">
             <img src="{{ asset('/images/siteTutorial.png') }}" id="siteTut" />
