@@ -19,11 +19,25 @@ class AccessTypeController extends Controller {
 
 	//ferpa Score view
 	public function testScore() {
+		$ferpaScore = About::select('ferpaScore')->where('userSSO', Session::get('userData'))->get();
+		if(count($ferpaScore) != 0)
+			return redirect('accessDesc');
 		return view('accessType.testScore');
+	}
+	public function updateTestScore()
+	{
+			return view('accessType.updateTestScore');
+	}
+	public function updateFerpaScore(Requests\UpdatefScoreRequest $request)
+	{
+		$user = Session::get('userData');
+		About::where('userSSO', $user)->update(['ferpaScore' => $request['Score']]);
+		$ferpaScore = About::select('ferpaScore')->where('userSSO', Session::get('userData'))->get();
+		return redirect()->action('HomeController@index');
 	}
 	//validate the ferpa score request and store in DB
 	public function updateFScore(Requests\UpdatefScoreRequest $request) {
-		
+
 		$user = Session::get('userData');
 
 		About::create(['userSSO' => $user , 'ferpaScore' => $request['Score'] ]);
@@ -170,7 +184,7 @@ class AccessTypeController extends Controller {
 		}
 	}
 
-	// View for student records access request 
+	// View for student records access request
 	public function recordAccess()
 	{
 		return view('accessType.recordAccess');
@@ -384,7 +398,7 @@ class AccessTypeController extends Controller {
 		$inR = Session::get('requestId');
 
 		Cashier::create(['requestId' => $inR, 'generalInquiryView' => $genInView, 'cashGroupPostView' => $cashGrpView, 'cashGroupPostUpdate' => $cashGrpUpdate]);
-		
+
 		$fInfo = FormInfo::find($inR);
 		$fInfo->update(['finanCashier' => true]);
 
@@ -419,7 +433,7 @@ class AccessTypeController extends Controller {
 
 	// Store reserved access request into DB
 	public function storeReserved(Requests\Reserved $request){
-		
+
 		$immView = false;
 		$immUpdate = false;
 		$tcaView = false;
@@ -485,6 +499,6 @@ class AccessTypeController extends Controller {
 		$fInfo = FormInfo::find($inR);
 		$fInfo->update(['reserved' => true]);
 
-		return redirect('home');	
+		return redirect('home');
 	}
 }

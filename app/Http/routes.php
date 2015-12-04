@@ -18,8 +18,10 @@ Route::get('home', 'HomeController@index');
 // Route::get('testScore', 'AccessTypeController@testScore');
 
 Route::get('testScore', ['middleware' => 'auth', 'uses'=> 'AccessTypeController@testScore']);
-
 Route::post('testScore', 'AccessTypeController@updateFScore');
+
+Route::get('updateTestScore', ['middleware' => 'auth', 'uses'=> 'AccessTypeController@updateTestScore']);
+Route::post('updateTestScore', 'AccessTypeController@updateFerpaScore');
 
 Route::get('accessDesc', ['middleware' => 'auth', 'uses'=> 'AccessTypeController@accessDesc']);
 Route::post('accessDesc', 'AccessTypeController@storeDesc');
