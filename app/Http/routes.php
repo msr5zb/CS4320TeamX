@@ -55,6 +55,8 @@ Route::post('financialAidAccess','AccessTypeController@studentFinancialAidStore'
 
 Route::get('viewForms',['middleware' => 'auth', 'uses'=> 'ViewFormsController@index']);
 
+Route::get('pdf', 'PDFController@index' );
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
