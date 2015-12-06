@@ -22,24 +22,24 @@
     <div class="col-md-4 col-md-offset-2">
       Immunization View
     </div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'immunizationview', false) !!}</center></div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'immunizationupate', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'immunizationView', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'immunizationUpate', false) !!}</center></div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-4 col-md-offset-2">
       Transfer Credit Admission
     </div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'tcaview', false) !!}</center></div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'tcaupate', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'transferCreditAdmissionView', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'transferCreditAdmissionUpdate', false) !!}</center></div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-4 col-md-offset-2">
       Relationships
     </div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'relationshipsview', false) !!}</center></div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'relationshipsupate', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'relationshipsView', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'relationshipsUpdate', false) !!}</center></div>
   </div>
   <hr>
   <div class="row">
@@ -47,7 +47,7 @@
       Student Groups
     </div>
     <div class="col-md-2"></div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'studentgroupsupate', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'studentGroupsUpdate', false) !!}</center></div>
   </div>
   <hr>
   <div class="row">
@@ -55,23 +55,23 @@
       Accommodate(Student Health)
     </div>
     <div class="col-md-2"></div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'shealthupdate', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'accommodateSHealthUpdate', false) !!}</center></div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-4 col-md-offset-2">
       Support Staff (Registrar's Office)
     </div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'regoffview', false) !!}</center></div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'regoffupdate', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'supportStaffView', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'supportStaffUpdate', false) !!}</center></div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-4 col-md-offset-2">
       Advance Standing Report
     </div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'asrview', false) !!}</center></div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'asrupdate', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'advanceStandingReportView', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'advanceStandingReportUpdate', false) !!}</center></div>
   </div>
   <br><br>
   <div class="row">

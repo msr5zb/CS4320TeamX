@@ -32,7 +32,7 @@
     <div class="col-md-3">{!! Form::checkbox('admissionsAccess[]', 'ged', false, ['class' => 'adAccessBoxes'])!!} GED </div>
     <div class="col-md-2">{!! Form::checkbox('admissionsAccess[]', 'millers', false, ['class' => 'adAccessBoxes'])!!} MILLERS </div>
     <div class="col-md-2">{!! Form::checkbox('admissionsAccess[]', 'prax', false, ['class' => 'adAccessBoxes'])!!} PRAX </div>
-    <div class="col-md-2">{!! Form::checkbox('admissionsAccess[]', 'pla_mu', false, ['class' => 'adAccessBoxes'])!!} PLA-MU</div>
+    <div class="col-md-2">{!! Form::checkbox('admissionsAccess[]', 'plamu', false, ['class' => 'adAccessBoxes'])!!} PLA-MU</div>
     <div class="col-md-3">{!! Form::checkbox('admissionsAccess[]', 'base', false, ['class' => 'adAccessBoxes'])!!} BASE </div>
   </div>
   <br>
