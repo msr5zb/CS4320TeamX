@@ -15,6 +15,7 @@ class FormInfo extends Migration {
 		 Schema::dropIfExists('form_info');
         Schema::create('form_info', function (Blueprint $table) {
             $table->increments('requestId');
+            $table->boolean('complete')->default(0);
             $table->boolean('admissions')->default(0);
             $table->boolean('studentRecords')->default(0);
             $table->boolean('finanCashier')->default(0);
