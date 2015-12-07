@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>Access Zou</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/docs.css') }}" rel="stylesheet">
@@ -28,9 +28,9 @@
 	<![endif]-->
 </head>
 <body>
-    
+
  <!-- ************************* Navbar *************************** -->
-<header class="navbar navbar-inverse navbar-fixed-top">		
+<header class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -56,7 +56,7 @@
                                 <li><a tabindex="-1" href="{{url('/testScore')}}">Create New Form</a></li>
                                 <li><a tabindex="-1" href="{{url('/viewForms') }}">View Forms</a></li>
                             </ul>
-                        </li>                    
+                        </li>
 					@endif
 				</ul>
 
@@ -73,7 +73,7 @@
 			</div>
 		</div>
     </header>
-    
+
  <!-- ************************* Banner *************************** -->
         <header class="bs-header">
             <div class="container group">
@@ -84,11 +84,11 @@
 
         <!-- Column Right -->
         <div class="floatLeft">
-          <h1>AccessZou</h1><p class="lead">Just Zou it.</p>          
-        </div>         
+          <h1>AccessZou</h1><p class="lead">Just Zou it.</p>
+        </div>
             </div>
         </header>
-    
+
   <!-- ************************* Content *************************** -->
 	<div class="container" id="layout">
 		@if (!Auth::guest())
