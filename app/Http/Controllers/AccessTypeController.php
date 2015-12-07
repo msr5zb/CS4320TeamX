@@ -471,7 +471,7 @@ class AccessTypeController extends Controller {
 		}
 
 		$form = FormInfo::find(Session::get('requestId'));
-		$form->delete();
+		$form->update(['complete' => true]);
 		
 		Session::forget('requestId');
 		Session::forget('requestDescription');
