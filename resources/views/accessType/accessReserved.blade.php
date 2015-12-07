@@ -74,10 +74,13 @@
     <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'advanceStandingReportUpdate', false) !!}</center></div>
   </div>
   <br><br>
-  <div class="row">
-    <div class="col-md-12">
-      {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}
+  <div class="row" >
+    <div class="col-md-5 col-md-offset-1"> 
+      <input type="submit" class="btn btn-success form-control" name="store" value="Complete" >  
     </div>
+    <div class="col-md-5"> 
+      <input type="submit" class="btn btn-danger form-control" name="store" value="Cancel" >  
+    </div>  
   </div>
   {!! Form::close() !!}
 </div>
