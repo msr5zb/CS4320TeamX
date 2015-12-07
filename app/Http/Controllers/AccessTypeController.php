@@ -183,7 +183,7 @@ class AccessTypeController extends Controller {
 			return redirect('accessReserved');
 		}
 		else if($request['reservedPrompt'] == 'No'){
-			return 'ToDo(no)';
+			return redirect('store');
 		}
 	}
 
@@ -466,8 +466,13 @@ class AccessTypeController extends Controller {
 		if(Session::get('accessSFcashier') != NULL){
 			Cashier::create(Session::get('accessSFcashier'));
 		}
-		Reserved::create(Session::get('accessReserved'));
+		if(Session::get('accessReserved') != NULL){
+			Reserved::create(Session::get('accessReserved'));
+		}
 
+		$form = FormInfo::find(Session::get('requestId'));
+		$form->delete();
+		
 		Session::forget('requestId');
 		Session::forget('requestDescription');
 		Session::forget('accessAcademic');
