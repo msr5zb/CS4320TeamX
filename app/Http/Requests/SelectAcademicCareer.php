@@ -21,10 +21,15 @@ class SelectAcademicCareer extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			//
-			'selectCareer' => 'required'
-		];
+		$in = Request::input('store');
+		if($in == 'Cancel'){
+			return [];
+		}
+		else {
+			return [
+				//
+				'selectCareer' => 'required'
+			];
+		}
 	}
-
 }

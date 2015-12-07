@@ -19,31 +19,51 @@ class AccessTypeController extends Controller {
 
 	//ferpa Score view
 	public function testScore() {
+		$ferpaScore = About::select('ferpaScore')->where('userSSO', Session::get('userData'))->get();
+		if(count($ferpaScore) != 0)
+			return redirect('accessDesc');
 		return view('accessType.testScore');
 	}
+	public function updateTestScore()
+	{
+			return view('accessType.updateTestScore');
+	}
+
+	public function updateFerpaScore(Requests\UpdatefScoreRequest $request)
+	{
+		$user = Session::get('userData');
+		About::where('userSSO', $user)->update(['ferpaScore' => $request['Score']]);
+		$ferpaScore = About::select('ferpaScore')->where('userSSO', Session::get('userData'))->get();
+		return redirect()->action('HomeController@index');
+	}
+
 	//validate the ferpa score request and store in DB
 	public function updateFScore(Requests\UpdatefScoreRequest $request) {
-		
+
 		$user = Session::get('userData');
 
 		About::create(['userSSO' => $user , 'ferpaScore' => $request['Score'] ]);
-		//$user->update(['ferpaScore' => $request['Score']]);
 
 		return redirect('accessDesc');
 	}
+
 	//Access description view
 	public function accessDesc() {
 		return view('accessType.accessDesc');
 	}
+
 	// Store the access description and render new view
 	public function storeDesc(Requests\CreateAccTypeRequest $request) {
 
-		$user = Session::get('userData');// Get userSSO from session var
-		// Insert the request description into request table
-		$id = Request1::create([ 'requestDescription' => $request['accessDescription'] , 'userSSO' => $user ]);
-		Session::put('requestId', $id['requestId']);// Add the requestId to the session variable
-		FormInfo::create(['requestId' => $id['requestId']]);
+		// Create a new FormInfo instance
 
+		$id = FormInfo::create([]);
+
+		// Store relavent info into session var
+		Session::put('requestDescription', $request['accessDescription']);
+		Session::put('requestId', $id['requestId']);
+
+		// Redirect to the academic selection
 		return redirect('accessAcademic');
 	}
 
@@ -55,39 +75,36 @@ class AccessTypeController extends Controller {
 	// Store the Academic Career selection into DB
 	public function storeAccAcad(Requests\SelectAcademicCareer $request) {
 
-		// Hold the validility of career
-		$ugrd = false;
-		$grad = false;
-		$med = false;
-		$vetMed = false;
-		$law = false;
+		// Array of columns of table
+		$academicType = ['ugrd', 'grad', 'med', 'vetMed', 'law'];
 
-		$inR = $request['selectCareer']; // Get the array of career boxes
+		// Give everyone a value 
+		$academicTypeValues = array('requestId' => Session::get('requestId'),
+									'ugrd' => false,
+									'grad' => false,
+									'med' => false, 
+									'vetMed' => false,
+									'law' => false);
 
-		// Set career values with requested value
-		foreach($inR as $s){
-			if($s == 'ugrd'){
-				$ugrd = true;
-			}
-			else if($s == 'grad'){
-				$grad = true;
-			}
-			else if($s == 'med'){
-				$med = true;
-			}
-			else if($s == 'vetmed'){
-				$vetMed = true;
-			}
-			else if($s == 'law'){
-				$law = true;
+		// Flip through the types array to see which are found in request, If found set that to be true
+		for ($i=0; $i < count($request['selectCareer']); $i++) {
+			if(in_array($request['selectCareer'][$i], $academicType)) {
+				$academicTypeValues[$request['selectCareer'][$i]] = true;
 			}
 		}
 
-		$rId = Session::get('requestId'); // Get requestId from session var
-		// Insert into academic career table
-		Careers::create([ 'requestId' => $rId , 'ugrd' => $ugrd , 'grad' => $grad , 'med' => $med , 'vetMed' => $vetMed, 'law' => $law ]);
+		// Store all new info in session var
+		Session::put('accessAcademic', $academicTypeValues);
 
-		return redirect('studentRecPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else {
+			return redirect('studentRecPrompt');
+		}
 	}
 
 	// Student record prompt
@@ -166,11 +183,11 @@ class AccessTypeController extends Controller {
 			return redirect('accessReserved');
 		}
 		else if($request['reservedPrompt'] == 'No'){
-			return 'ToDo(no)';
+			return redirect('store');
 		}
 	}
 
-	// View for student records access request 
+	// View for student records access request
 	public function recordAccess()
 	{
 		return view('accessType.recordAccess');
@@ -253,143 +270,106 @@ class AccessTypeController extends Controller {
 				$recordTypesValues[$request['recordAccess'][$i]] = true;
 			}
 		}
-		Records::create($recordTypesValues);
+		
+		// Store relevant info into session var
+		Session::put('accessRecords', $recordTypesValues);
 
+		// Update student records prompt to true
 		$fInfo = FormInfo::find($recordTypesValues['requestId']);
 		$fInfo->update(['studentRecords' => true]);
 
-		return redirect('admissionPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else{
+			return redirect('admissionPrompt');
+		}
 	}
 
 	// Store admissions request in DB
 	public function storeAdmissions(Requests\Admissions $request) {
 
-		// Set all variable to false
-		$act = false;
-		$sat = false;
-		$gre = false;
-		$gmat = false;
-		$tofel = false;
-		$ielts = false;
-		$lsat = false;
-		$mcat = false;
-		$ap = false;
-		$clep = false;
-		$ged = false;
-		$millers = false;
-		$prax = false;
-		$pla_mu = false;
-		$base = false;
+		// Array of columns of table
+		$admissionsType = ['act', 'sat', 'gre', 'gmat', 'tofel', 'ielts', 'lsat', 'mcat', 'ap', 'clep', 'ged', 'millers', 'prax', 'plamu', 'base'];
 
-		// Get the array of inputs
-		$inR = $request['admissionsAccess'];
+		// Give everyone a value
+		$admissionsTypeValues = array('requestId' => Session::get('requestId'),
+									  'act' => false, 
+									  'sat' => false, 
+									  'gre' => false, 
+									  'gmat' => false, 
+									  'tofel' => false, 
+									  'ielts' => false, 
+									  'lsat' => false, 
+									  'mcat' => false, 
+									  'ap' => false, 
+									  'clep' => false, 
+									  'ged' => false, 
+									  'millers' => false, 
+									  'prax' => false, 
+									  'plamu' => false, 
+									  'base' => false);
 
-		// Determine the validity
-		foreach($inR as $s) {
-			if($s == 'selectAll') {
-				$act = true;
-				$sat = true;
-				$gre = true;
-				$gmat = true;
-				$tofel = true;
-				$ielts = true;
-				$lsat = true;
-				$mcat = true;
-				$ap = true;
-				$clep = true;
-				$ged = true;
-				$millers = true;
-				$prax = true;
-				$pla_mu = true;
-				$base = true;
+		// Flip through the types array to see which are found in request, If found set that to be true
+		for ($i=0; $i < count($request['admissionsAccess']); $i++) {
+			if(in_array($request['admissionsAccess'][$i], $admissionsType)) {
+				$admissionsTypeValues[$request['recordAccess'][$i]] = true;
+			}
+			else if($request['admissionsAccess'][$i] == 'selectAll'){
+				for($j=0; $j < count($admissionsType); ++$j){
+					$admissionsTypeValues[$admissionsType[$j]] = true;
+				}
 				break;
 			}
-			if($s == 'act') {
-				$act = true;
-			}
-			else if($s == 'sat'){
-				$sat = true;
-			}
-			else if($s == 'gre'){
-				$gre = true;
-			}
-			else if($s == 'gmat'){
-				$gmat = true;
-			}
-			else if($s == 'tofel'){
-				$tofel = true;
-			}
-			else if($s == 'ielts'){
-				$ielts = true;
-			}
-			else if($s == 'lsat'){
-				$lsat = true;
-			}
-			else if($s == 'mcat'){
-				$mcat = true;
-			}
-			else if($s == 'ap'){
-				$ap = true;
-			}
-			else if($s == 'clep'){
-				$clep = true;
-			}
-			else if($s == 'ged'){
-				$ged = true;
-			}
-			else if($s == 'millers'){
-				$millers = true;
-			}
-			else if($s == 'prax'){
-				$prax = true;
-			}
-			else if($s == 'pla_mu'){
-				$pla_mu = true;
-			}
-			else if($s == 'base'){
-				$base = true;
-			}
 		}
-		$rId = Session::get('requestId'); // Get requestId from session var
-		// Insert into admissions table
-		Admissions::create(['requestId' => $rId , 'act' => $act , 'sat' => $sat , 'gre' => $gre , 'gmat' => $gmat , 'tofel' => $tofel , 'ielts' => $ielts , 'lsat' => $lsat , 'mcat' => $mcat , 'ap' => $ap , 'clep' => $clep , 'ged' => $ged , 'millers' => $millers , 'prax' => $prax , 'plamu' => $pla_mu , 'base' => $base ]);
 
-		$fInfo = FormInfo::find($rId);
+		// Store relevant info into session var
+		Session::put('accessAdmissions', $admissionsTypeValues);
+
+		// Update Admissions prompt to true
+		$fInfo = FormInfo::find($admissionsTypeValues['requestId']);
 		$fInfo->update(['admissions' => true]);
 
-		return redirect('finanCashierPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else{
+			return redirect('finanCashierPrompt');
+		}
 	}
 
 	// Store student financial cashier request into DB
 	public function storeCashier(Requests\StudentFinancialCashier $request){
 
-		$genInView = false;
-		$cashGrpView = false;
-		$cashGrpUpdate = false;
+		$sfCashierType = ['generalInquiryView', 'cashGroupPostView', 'cashGroupPostUpdate'];
+		
+		$sfCashierTypeValues = array('requestId' => Session::get('requestId'),
+									 'generalInquiryView' => false, 
+									 'cashGroupPostView' => false, 
+									 'cashGroupPostUpdate' => false);
 
-		$inC = $request['sfCash'];
 
-		foreach($inC as $s){
-			if($s == 'generalinview'){
-				$genInView = true;
-			}
-			else if($s == 'cashgrpview'){
-				$cashGrpView = true;
-			}
-			else if($s == 'cashgrpupdate'){
-				$cashGrpUpdate = true;
+		// Flip through the types array to see which are found in request, If found set that to be true
+		for ($i=0; $i < count($request['sfCash']); $i++) {
+			if(in_array($request['sfCash'][$i], $sfCashierType)) {
+				$academicTypeValues[$request['sfCash'][$i]] = true;
 			}
 		}
 
-		$inR = Session::get('requestId');
+		// Store relevant info into sessions var
+		Session::put('accessSFcashier', $sfCashierTypeValues);
 
-		Cashier::create(['requestId' => $inR, 'generalInquiryView' => $genInView, 'cashGroupPostView' => $cashGrpView, 'cashGroupPostUpdate' => $cashGrpUpdate]);
-		
-		$fInfo = FormInfo::find($inR);
+		// Update sfCashier prompt to true 
+		$fInfo = FormInfo::find($sfCashierTypeValues['requestId']);
 		$fInfo->update(['finanCashier' => true]);
 
 		return redirect('finanAidPrompt');
-
 	}
 
 	// Store student financial aid request into DB
@@ -409,82 +389,115 @@ class AccessTypeController extends Controller {
 				$dbFiledsValues[$request['fACash'][$i]] = true;
 			}
 		}
-		StudentFinancialAid::create($dbFiledsValues);
+		
+		// Store relevant info into sessions var
+		Session::put('accessSFaid', $dbFiledsValues);
 
+		// Update the sfAid prompt to true
 		$fInfo = FormInfo::find($dbFiledsValues['requestId']);
 		$fInfo->update(['finanAid' => true]);
 
-		return redirect('reservedPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else{
+			return redirect('reservedPrompt');
+		}
 	}
 
 	// Store reserved access request into DB
 	public function storeReserved(Requests\Reserved $request){
-		
-		$immView = false;
-		$immUpdate = false;
-		$tcaView = false;
-		$tcaUpdate = false;
-		$relView = false;
-		$relUpdate = false;
-		$stGrpUpdate = false;
-		$stHealthUpdate = false;
-		$regOffView = false;
-		$regOffUpdate = false;
-		$asrView = false;
-		$asrUpdate = false;
 
-		// Get request input
-		$inRes = $request['accessReserved'];
+		$reservedType = ['immunizationView', 'immunizationUpdate', 'transferCreditAdmissionView', 'transferCreditAdmissionUpdate', 'relationshipsView', 'relationshipsUpdate', 'studentGroupsUpdate', 'accommodateSHealthUpdate', 'supportStaffView', 'supportStaffUpdate', 'advanceStandingReportView' , 'advanceStandingReportUpdate'];
 
-		// Determin Validity
-		foreach($inRes as $s){
-			if($s == 'immunizationview'){
-				$immView = true;
-			}
-			else if($s == 'immunizationupdate'){
-				$immUpdate = true;
-			}
-			else if($s == 'tcaview'){
-				$tcaView = true;
-			}
-			else if($s == 'tcaupdate'){
-				$tcaUpdate = true;
-			}
-			else if($s == 'relationshipsview'){
-				$relView = true;
-			}
-			else if($s == 'relationshipsupdate'){
-				$relUpdate = true;
-			}
-			else if($s == 'studentgroupsupate'){
-				$stGrpUpdate =true;
-			}
-			else if($s == 'shealthupdate'){
-				$stHealthUpdate = true;
-			}
-			else if($s == 'regoffview'){
-				$regOffView = true;
-			}
-			else if($s == 'regoffupdate' ){
-				$regOffUpdate = true;
-			}
-			else if($s == 'asrview'){
-				$asrView = true;
-			}
-			else if($s == 'asrUpdate'){
-				$asrUpdate = true;
+		$reservedTypeValues = array('requestId' => Session::get('requestId'),
+									'immunizationView' => false, 
+									'immunizationUpdate' => false,
+									'transferCreditAdmissionView' => false, 
+									'transferCreditAdmissionUpdate' => false, 
+									'relationshipsView' => false, 
+									'relationshipsUpdate' => false, 
+									'studentGroupsUpdate' => false, 
+									'accommodateSHealthUpdate' => false, 
+									'supportStaffView' => false, 
+									'supportStaffUpdate' => false, 
+									'advanceStandingReportView' => false, 
+									'advanceStandingReportUpdate' => false);
+
+		// Flip through the types array to see which are found in request, If found set that to be true
+		for ($i=0; $i < count($request['accessReserved']); $i++) {
+			if(in_array($request['accessReserved'][$i], $reservedType)) {
+				$TypeValues[$request['accessReserved'][$i]] = true;
 			}
 		}
 
-		// Get requestId for this request
-		$inR = Session::get('requestId');
+		// Store relevant info into sessions var
+		Session::put('accessReserved', $reservedTypeValues);
 
-		//Create a row in the Reserved table
-		Reserved::create(['requestId' => $inR , 'immunizationView' => $immView , 'immunizationUpdate' => $immUpdate , 'transferCreditAdmissionView' => $tcaView , 'transferCreditAdmissionUpdate' => $tcaUpdate , 'relationshipsView' => $relView , 'relationshipsUpdate' => $relUpdate , 'studentGroupsUpdate' => $stGrpUpdate , 'accommodateSHealthUpdate' => $stHealthUpdate , 'supportStaffView' => $regOffView , 'supportStaffUpdate' => $regOffUpdate , 'advanceStandingReportView' => $asrView , 'advanceStandingReportUpdate' => $asrUpdate ]);
-
-		$fInfo = FormInfo::find($inR);
+		// Update the reserved prompt to be true
+		$fInfo = FormInfo::find($reservedTypeValues['requestId']);
 		$fInfo->update(['reserved' => true]);
+		if($request['store'] == 'Complete'){
+			return redirect('store');
+		}
+		else if($request['store'] =='Cancel'){
+			return redirect('cancel');
+		}
+	}
 
-		return redirect('home');	
+	public function store() {
+
+		Request1::create(['userSSO' => Session::get('userData'), 'requestId' => Session::get('requestId'), 'requestDescription' => Session::get('requestId')]);
+		if(Session::get('accessAcademic') != NULL){
+			Careers::create(Session::get('accessAcademic'));
+		}
+		if(Session::get('accessRecords') != NULL){
+			Records::create(Session::get('accessRecords'));
+		}
+		if(Session::get('accessAdmissions') != NULL){
+			Admissions::create(Session::get('accessAdmissions'));
+		}
+		if(Session::get('accessSFaid') != NULL){
+			StudentFinancialAid::create(Session::get('accessSFaid'));
+		}
+		if(Session::get('accessSFcashier') != NULL){
+			Cashier::create(Session::get('accessSFcashier'));
+		}
+		if(Session::get('accessReserved') != NULL){
+			Reserved::create(Session::get('accessReserved'));
+		}
+
+		$form = FormInfo::find(Session::get('requestId'));
+		$form->update(['complete' => true]);
+		
+		Session::forget('requestId');
+		Session::forget('requestDescription');
+		Session::forget('accessAcademic');
+		Session::forget('accessRecords');
+		Session::forget('accessAdmissions');
+		Session::forget('accessSFaid');
+		Session::forget('accessSFcashier');
+		Session::forget('accessReserved');
+		
+		return redirect('home');
+	}
+
+	public function cancel() {
+
+		$form = FormInfo::find(Session::get('requestId'));
+		$form->delete();
+		Session::forget('requestId');
+		Session::forget('requestDescription');
+		Session::forget('accessAcademic');
+		Session::forget('accessRecords');
+		Session::forget('accessAdmissions');
+		Session::forget('accessSFaid');
+		Session::forget('accessSFcashier');
+		Session::forget('accessReserved');
+
+		return redirect('home');
 	}
 }
