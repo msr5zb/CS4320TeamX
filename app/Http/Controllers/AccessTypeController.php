@@ -56,6 +56,7 @@ class AccessTypeController extends Controller {
 	public function storeDesc(Requests\CreateAccTypeRequest $request) {
 
 		// Create a new FormInfo instance
+
 		$id = FormInfo::create([]);
 
 		// Store relavent info into session var
@@ -95,7 +96,15 @@ class AccessTypeController extends Controller {
 		// Store all new info in session var
 		Session::put('accessAcademic', $academicTypeValues);
 
-		return redirect('studentRecPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else {
+			return redirect('studentRecPrompt');
+		}
 	}
 
 	// Student record prompt
@@ -269,7 +278,15 @@ class AccessTypeController extends Controller {
 		$fInfo = FormInfo::find($recordTypesValues['requestId']);
 		$fInfo->update(['studentRecords' => true]);
 
-		return redirect('admissionPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else{
+			return redirect('admissionPrompt');
+		}
 	}
 
 	// Store admissions request in DB
@@ -316,7 +333,15 @@ class AccessTypeController extends Controller {
 		$fInfo = FormInfo::find($admissionsTypeValues['requestId']);
 		$fInfo->update(['admissions' => true]);
 
-		return redirect('finanCashierPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else{
+			return redirect('finanCashierPrompt');
+		}
 	}
 
 	// Store student financial cashier request into DB
@@ -372,7 +397,15 @@ class AccessTypeController extends Controller {
 		$fInfo = FormInfo::find($dbFiledsValues['requestId']);
 		$fInfo->update(['finanAid' => true]);
 
-		return redirect('reservedPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else{
+			return redirect('reservedPrompt');
+		}
 	}
 
 	// Store reserved access request into DB
@@ -407,6 +440,58 @@ class AccessTypeController extends Controller {
 		// Update the reserved prompt to be true
 		$fInfo = FormInfo::find($reservedTypeValues['requestId']);
 		$fInfo->update(['reserved' => true]);
+		if($request['store'] == 'Complete'){
+			return redirect('store');
+		}
+		else if($request['store'] =='Cancel'){
+			return redirect('cancel');
+		}
+	}
+
+	public function store() {
+
+		Request1::create(['userSSO' => Session::get('userData'), 'requestId' => Session::get('requestId'), 'requestDescription' => Session::get('requestId')]);
+		if(Session::get('accessAcademic') != NULL){
+			Careers::create(Session::get('accessAcademic'));
+		}
+		if(Session::get('accessRecords') != NULL){
+			Records::create(Session::get('accessRecords'));
+		}
+		if(Session::get('accessAdmissions') != NULL){
+			Admissions::create(Session::get('accessAdmissions'));
+		}
+		if(Session::get('accessSFaid') != NULL){
+			StudentFinancialAid::create(Session::get('accessSFaid'));
+		}
+		if(Session::get('accessSFcashier') != NULL){
+			Cashier::create(Session::get('accessSFcashier'));
+		}
+		Reserved::create(Session::get('accessReserved'));
+
+		Session::forget('requestId');
+		Session::forget('requestDescription');
+		Session::forget('accessAcademic');
+		Session::forget('accessRecords');
+		Session::forget('accessAdmissions');
+		Session::forget('accessSFaid');
+		Session::forget('accessSFcashier');
+		Session::forget('accessReserved');
+		
+		return redirect('home');
+	}
+
+	public function cancel() {
+
+		$form = FormInfo::find(Session::get('requestId'));
+		$form->delete();
+		Session::forget('requestId');
+		Session::forget('requestDescription');
+		Session::forget('accessAcademic');
+		Session::forget('accessRecords');
+		Session::forget('accessAdmissions');
+		Session::forget('accessSFaid');
+		Session::forget('accessSFcashier');
+		Session::forget('accessReserved');
 
 		return redirect('home');
 	}
