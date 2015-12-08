@@ -1,9 +1,6 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-.bs-header {
-  color: #cdbfe3;
-  background-color: black;
-  background-image: url("../img/bannerOverlay.png");
-}
+/*  background-image: url("../img/bannerOverlay.png");
+}*/
 .bs-header {
   font-size: 16px;
  
@@ -37,12 +34,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin:auto;
-  background-image: url("../images/background4.png");
+  background-image: url("../images/background_lrg.jpg");
   background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
-  background-color: black;
+  margin: 0;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
