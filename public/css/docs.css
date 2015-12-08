@@ -229,8 +229,8 @@ width:50%;
  * Apply the map background via base64 and relevant colors where we need 'em.
  */
 
-.bs-docs-home,
-.bs-header {
+.bs-docs-home/*,
+/*.bs-header*/ {
   color: #cdbfe3;
   background-color: black;
   background-image: url("../images/bannerOverlay.png");
