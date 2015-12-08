@@ -22,7 +22,7 @@ class Admissions extends Request {
 	public function rules()
 	{
 		$in = Request::input('store');
-		if($in == 'Cancel'){
+		if($in == 'Cancel'|| $in == 'Save'){
 			return [];
 		}
 		else {
