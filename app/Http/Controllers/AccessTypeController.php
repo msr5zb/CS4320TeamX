@@ -274,9 +274,6 @@ class AccessTypeController extends Controller {
 		// Store relevant info into session var
 		Session::put('accessRecords', $recordTypesValues);
 
-		// Update student records prompt to true
-		$fInfo = FormInfo::find($recordTypesValues['requestId']);
-		$fInfo->update(['studentRecords' => true]);
 
 		if($request['store'] == 'Save'){
 			return redirect('store');
@@ -329,10 +326,6 @@ class AccessTypeController extends Controller {
 		// Store relevant info into session var
 		Session::put('accessAdmissions', $admissionsTypeValues);
 
-		// Update Admissions prompt to true
-		$fInfo = FormInfo::find($admissionsTypeValues['requestId']);
-		$fInfo->update(['admissions' => true]);
-
 		if($request['store'] == 'Save'){
 			return redirect('store');
 		}
@@ -364,10 +357,6 @@ class AccessTypeController extends Controller {
 
 		// Store relevant info into sessions var
 		Session::put('accessSFcashier', $sfCashierTypeValues);
-
-		// Update sfCashier prompt to true 
-		$fInfo = FormInfo::find($sfCashierTypeValues['requestId']);
-		$fInfo->update(['finanCashier' => true]);
 
 		return redirect('finanAidPrompt');
 	}
@@ -450,7 +439,7 @@ class AccessTypeController extends Controller {
 
 	public function store() {
 
-		Request1::create(['userSSO' => Session::get('userData'), 'requestId' => Session::get('requestId'), 'requestDescription' => Session::get('requestId')]);
+		Request1::create(['userSSO' => Session::get('userData'), 'requestId' => Session::get('requestId'), 'requestDescription' => Session::get('requestDescription')]);
 		if(Session::get('accessAcademic') != NULL){
 			Careers::create(Session::get('accessAcademic'));
 		}
@@ -471,7 +460,8 @@ class AccessTypeController extends Controller {
 		}
 
 		$form = FormInfo::find(Session::get('requestId'));
-		$form->update(['complete' => true]);
+		$form->complete = true;
+		$form->save();
 		
 		Session::forget('requestId');
 		Session::forget('requestDescription');
