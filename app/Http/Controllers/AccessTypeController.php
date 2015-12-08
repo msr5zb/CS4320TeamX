@@ -448,20 +448,38 @@ class AccessTypeController extends Controller {
 		if(Session::get('accessAcademic') != NULL){
 			Careers::create(Session::get('accessAcademic'));
 		}
+		else{
+			Careers::create(['requestId' => Session::get('requestId')]);
+		}
 		if(Session::get('accessRecords') != NULL){
 			Records::create(Session::get('accessRecords'));
+		}
+		else{
+			Records::create(['requestId' => Session::get('requestId')]);
 		}
 		if(Session::get('accessAdmissions') != NULL){
 			Admissions::create(Session::get('accessAdmissions'));
 		}
+		else{
+			Admissions::create(['requestId' => Session::get('requestId')]);
+		}
 		if(Session::get('accessSFaid') != NULL){
 			StudentFinancialAid::create(Session::get('accessSFaid'));
+		}
+		else{
+			StudentFinancialAid::create(['requestId' => Session::get('requestId')]);
 		}
 		if(Session::get('accessSFcashier') != NULL){
 			Cashier::create(Session::get('accessSFcashier'));
 		}
+		else{
+			Cashier::create(['requestId' => Session::get('requestId')]);
+		}
 		if(Session::get('accessReserved') != NULL){
 			Reserved::create(Session::get('accessReserved'));
+		}
+		else{
+			Reserved::create(['requestId' => Session::get('requestId')]);
 		}
 		
 		Session::forget('requestId');
