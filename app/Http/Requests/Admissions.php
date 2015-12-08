@@ -21,9 +21,15 @@ class Admissions extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			'admissionsAccess' => 'required'
-		];
+		$in = Request::input('store');
+		if($in == 'Cancel'|| $in == 'Save'){
+			return [];
+		}
+		else {
+			return [
+				'admissionsAccess' => 'required'
+			];
+		}
 	}
 
 }

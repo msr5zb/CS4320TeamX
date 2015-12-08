@@ -58,12 +58,22 @@
     <!-- <center>{!! Form::checkbox('fAnfas[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <br>
 <div class="row">
-  <div class="col-md-12">
-    {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}
+    <div class="col-md-10 col-md-offset-1">
+      {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}
+    </div>
   </div>
-</div>
+  <br>
+  <div class="row" >
+        <div class="col-md-5 col-md-offset-1"> 
+          <input type="submit" class="btn btn-success form-control" name="store" value="Save" >  
+        </div>
+        <div class="col-md-5"> 
+          <input type="submit" class="btn btn-danger form-control" name="store" value="Cancel" >  
+        </div>  
+  </div>
 {!! Form::close() !!}
 </div>
 

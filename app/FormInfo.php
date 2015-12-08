@@ -11,7 +11,7 @@ class FormInfo extends Model {
 	protected $primaryKey = 'requestId';
 
 	// Tell eloquent that this table doesnt increment a variable
-	protected $increments = false; 
+	protected $increments = true; 
 
 	 //allow mass assignment for the following attributes
     protected $fillable = [

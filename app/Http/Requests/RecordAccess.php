@@ -21,31 +21,36 @@ class RecordAccess extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			'basicInquiryView',
-			'advancedInquiryView',
-			'advancedInquiryUpdate',
-			'threeCsView',
-			'threeCsUpdate',
-			'advisorUpdate',
-			'departmentSOCUpdate',
-			'serviceIndicatorsView',
-			'serviceIndicatorsUpdate',
-			'studentGroupView',
-			'studyListView',
-			'registerEnrollmentView',
-			'registerEnrollmentUpdate',
-			'advisorStudentCenterView',
-			'classPermissionView',
-			'classPermissionUpdate',
-			'classRosterView',
-			'blockEnrollmentsView',
-			'blockEnrollmentsUpdate',
-			'reportManagerView',
-			'selfServiceAdvisorUpdate',
-			'fiscalOfficerView',
-			'acadmenicAdvisingProfileUpdate'
-		];
+		$in = Request::input('store');
+		if($in == 'Cancel'){
+			return [];
+		}
+		else{
+			return [
+				'basicInquiryView',
+				'advancedInquiryView',
+				'advancedInquiryUpdate',
+				'threeCsView',
+				'threeCsUpdate',
+				'advisorUpdate',
+				'departmentSOCUpdate',
+				'serviceIndicatorsView',
+				'serviceIndicatorsUpdate',
+				'studentGroupView',
+				'studyListView',
+				'registerEnrollmentView',
+				'registerEnrollmentUpdate',
+				'advisorStudentCenterView',
+				'classPermissionView',
+				'classPermissionUpdate',
+				'classRosterView',
+				'blockEnrollmentsView',
+				'blockEnrollmentsUpdate',
+				'reportManagerView',
+				'selfServiceAdvisorUpdate',
+				'fiscalOfficerView',
+				'acadmenicAdvisingProfileUpdate'
+			];
+		}
 	}
-
 }

@@ -19,7 +19,7 @@
             };
             margins = {
                 top: 10,
-                bottom: 60,
+                bottom: 10,
                 left: 60,
                 width: 500
             };

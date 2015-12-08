@@ -46,14 +46,17 @@ Route::post('finanCashier', 'AccessTypeController@storeCashier');
 
 Route::get('finanAidPrompt', ['middleware' => 'auth', 'uses'=> 'AccessTypeController@finanAidPrompt']);
 Route::post('finanAidPrompt', 'AccessTypeController@isFinanAid');
+Route::get('financialAidAccess',['middleware' => 'auth', 'uses'=> 'AccessTypeController@financialAidAccessShow']);
+Route::post('financialAidAccess','AccessTypeController@studentFinancialAidStore');
 
 Route::get('reservedPrompt', ['middleware' => 'auth', 'uses'=> 'AccessTypeController@reservedPrompt']);
 Route::post('reservedPrompt', 'AccessTypeController@isReserved');
 Route::get('accessReserved', ['middleware' => 'auth', 'uses'=> 'AccessTypeController@accessReserved']);
 Route::post('accessReserved', 'AccessTypeController@storeReserved');
 
-Route::get('financialAidAccess',['middleware' => 'auth', 'uses'=> 'AccessTypeController@financialAidAccessShow']);
-Route::post('financialAidAccess','AccessTypeController@studentFinancialAidStore');
+Route::get('store', 'AccessTypeController@store');
+
+Route::get('cancel', 'AccessTypeController@cancel');
 
 Route::get('viewForms',['middleware' => 'auth', 'uses'=> 'ViewFormsController@index']);
 
