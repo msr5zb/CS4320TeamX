@@ -9,6 +9,7 @@ use Session;
 use App\About as About;
 use App\Request as Requestz;
 use App\Http\Controllers\viewController;
+use App\AcademicCareers as Careers;
 
 class ViewFormsController extends Controller {
 
@@ -30,17 +31,28 @@ class ViewFormsController extends Controller {
 		$requests = DB::table('request')->select('requestId')->where('request.userSSO', '=', $user->userSSO)->get();
 		Session::forget('requestView');
 		foreach ($requests as $req) {
-			$form_info = DB::table('form_info')->select('requestId','complete','admissions','studentRecords', 'finanCashier', 'finanAid', 'reserved', 'created_at', 'updated_at')->where('form_info.requestId', '=', $req->requestId)->get();
+			$form_info = DB::table('form_info')->select('requestId','complete', 'created_at', 'updated_at')->where('form_info.requestId', '=', $req->requestId)->get();
 			Session::push('requestView', $form_info[0]);
 		}
 		// var_dump(Session::get('requestView'));
 		$requestView = Session::get('requestView');
 		return view( 'viewForms', compact('requestView'));
 	}
+
 	public function viewRequest(Requests\ViewForms $request)
 	{
-		var_dump($request['requestView']);
-		//TO DO
+		// Session::put('requestId', $request['requestView']);
+		// $oput = Careers::select('ugrd','grad','med','vetMed','law')->where('requestId', '=', Session::get('requestId'))->get();
+		// Session::put('accessAcademic', $oput[0]);
+		// $reqDesc = DB::table('request')->select('requestDescription')->where('requestId', '=', Session::get('requestId'))->get();
+		// Session::put('requestDescription', $reqDesc[0]->requestDescription);
+		// $recStudent = DB:table('student_records')->select()
+		// // Session::forget('accessRecords');
+		// // Session::forget('accessAdmissions');
+		// // Session::forget('accessSFaid');
+		// // Session::forget('accessSFcashier');
+		// // Session::forget('accessReserved');
+		return 'Under Construction';
 	}
 
 	/**
