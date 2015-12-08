@@ -59,6 +59,7 @@ Route::get('store', 'AccessTypeController@store');
 Route::get('cancel', 'AccessTypeController@cancel');
 
 Route::get('viewForms',['middleware' => 'auth', 'uses'=> 'ViewFormsController@index']);
+Route::post('viewForms','ViewFormsController@viewRequest');
 
 Route::get('pdf', 'PDFController@index' );
 

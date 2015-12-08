@@ -1,9 +1,6 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-.bs-header {
-  color: #cdbfe3;
-  background-color: black;
-  background-image: url("../img/bannerOverlay.png");
-}
+/*  background-image: url("../img/bannerOverlay.png");
+}*/
 .bs-header {
   font-size: 16px;
  
@@ -37,13 +34,14 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
+  background-image: url("../images/background_lrg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0;
-  background-color: black;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  position: relative; /* For scrollyspy */
   padding-top: 50px; /* Account for fixed navbar */
 }
 article,
@@ -917,9 +915,7 @@ html {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body {
 
-}
 input,
 button,
 select,
@@ -6261,7 +6257,7 @@ button.close {
     display: none !important;
   }
 }
-body,
+
 label,
 .checkbox label {
   font-weight: 300;

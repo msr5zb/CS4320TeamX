@@ -78,10 +78,6 @@
         <header class="bs-header">
             <div class="container group">
                       <!-- Column Left -->
-        <div class="floatLeft">
-            <img src="{{ asset('/images/tiger.png') }}" id="tigerPic" />
-        </div>
-
         <!-- Column Right -->
         <div class="floatLeft">
           <h1>AccessZou</h1><p class="lead">Just Zou it.</p>
