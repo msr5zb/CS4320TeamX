@@ -17,7 +17,7 @@ class ViewFormsController extends Controller {
 	{
 		$this->middleware( 'auth' );
 	}
-	
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -26,20 +26,21 @@ class ViewFormsController extends Controller {
 	public function index()
 	{
         $user = \Auth::user(); // Added userSSO to session var
-		
-		$requests = DB::table('request')->where('request.userSSO', '=', $user->userSSO) 
-           ->join('about', 'request.userSSO', '=', 'about.userSSO')
-           ->join('users', 'request.userSSO', '=', 'users.userSSO')
-           ->join('academic_careers', 'request.requestId', '=', 'academic_careers.requestId')
-           ->join('student_records', 'request.requestId', '=', 'student_records.requestId')
-           ->join('admissions', 'request.requestId', '=', 'admissions.requestId')
-           ->join('reserved', 'request.requestId', '=', 'reserved.requestId')
-           ->join('student_financial_aid', 'request.requestId', '=', 'student_financial_aid.requestId')
-           ->join('student_financial_cashier', 'request.requestId', '=', 'student_financial_cashier.requestId')
-           ->select('request.*', 'about.ferpaScore', 'academic_careers.*', 'student_records.*', 'admissions.*', 'reserved.*', 'student_financial_cashier.*', 'student_financial_aid.*', 'users.*')
-           ->get();
 
-		return view( 'viewForms', compact('requests') ) ;
+		$requests = DB::table('request')->select('requestId')->where('request.userSSO', '=', $user->userSSO)->get();
+		Session::forget('requestView');
+		foreach ($requests as $req) {
+			$form_info = DB::table('form_info')->select('requestId','complete','admissions','studentRecords', 'finanCashier', 'finanAid', 'reserved', 'created_at', 'updated_at')->where('form_info.requestId', '=', $req->requestId)->get();
+			Session::push('requestView', $form_info[0]);
+		}
+		// var_dump(Session::get('requestView'));
+		$requestView = Session::get('requestView');
+		return view( 'viewForms', compact('requestView'));
+	}
+	public function viewRequest(Requests\ViewForms $request)
+	{
+		var_dump($request['requestView']);
+		//TO DO
 	}
 
 	/**

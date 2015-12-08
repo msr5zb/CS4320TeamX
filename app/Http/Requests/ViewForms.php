@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class Reserved extends Request {
+class ViewForms extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class Reserved extends Request {
 	public function rules()
 	{
 		return [
-			
+			'requestView' => 'required'
 		];
 	}
 
