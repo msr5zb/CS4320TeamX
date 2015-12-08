@@ -274,9 +274,6 @@ class AccessTypeController extends Controller {
 		// Store relevant info into session var
 		Session::put('accessRecords', $recordTypesValues);
 
-		// Update student records prompt to true
-		$fInfo = FormInfo::find($recordTypesValues['requestId']);
-		$fInfo->update(['studentRecords' => true]);
 
 		if($request['store'] == 'Save'){
 			return redirect('store');
@@ -329,10 +326,6 @@ class AccessTypeController extends Controller {
 		// Store relevant info into session var
 		Session::put('accessAdmissions', $admissionsTypeValues);
 
-		// Update Admissions prompt to true
-		$fInfo = FormInfo::find($admissionsTypeValues['requestId']);
-		$fInfo->update(['admissions' => true]);
-
 		if($request['store'] == 'Save'){
 			return redirect('store');
 		}
@@ -361,15 +354,19 @@ class AccessTypeController extends Controller {
 				$academicTypeValues[$request['sfCash'][$i]] = true;
 			}
 		}
-
+		
 		// Store relevant info into sessions var
 		Session::put('accessSFcashier', $sfCashierTypeValues);
 
-		// Update sfCashier prompt to true 
-		$fInfo = FormInfo::find($sfCashierTypeValues['requestId']);
-		$fInfo->update(['finanCashier' => true]);
-
-		return redirect('finanAidPrompt');
+		if($request['store'] == 'Save'){
+			return redirect('store');
+		}
+		else if($request['store'] == 'Cancel'){
+			return redirect('cancel');
+		}
+		else{
+			return redirect('finanAidPrompt');
+		}
 	}
 
 	// Store student financial aid request into DB
@@ -392,10 +389,6 @@ class AccessTypeController extends Controller {
 		
 		// Store relevant info into sessions var
 		Session::put('accessSFaid', $dbFiledsValues);
-
-		// Update the sfAid prompt to true
-		$fInfo = FormInfo::find($dbFiledsValues['requestId']);
-		$fInfo->update(['finanAid' => true]);
 
 		if($request['store'] == 'Save'){
 			return redirect('store');
@@ -437,10 +430,11 @@ class AccessTypeController extends Controller {
 		// Store relevant info into sessions var
 		Session::put('accessReserved', $reservedTypeValues);
 
-		// Update the reserved prompt to be true
-		$fInfo = FormInfo::find($reservedTypeValues['requestId']);
-		$fInfo->update(['reserved' => true]);
 		if($request['store'] == 'Complete'){
+			// Tell form_info that this form is complete
+			$form = FormInfo::find(Session::get('requestId'));
+			$form->complete = true;
+			$form->save();
 			return redirect('store');
 		}
 		else if($request['store'] =='Cancel'){
@@ -450,7 +444,7 @@ class AccessTypeController extends Controller {
 
 	public function store() {
 
-		Request1::create(['userSSO' => Session::get('userData'), 'requestId' => Session::get('requestId'), 'requestDescription' => Session::get('requestId')]);
+		Request1::create(['userSSO' => Session::get('userData'), 'requestId' => Session::get('requestId'), 'requestDescription' => Session::get('requestDescription')]);
 		if(Session::get('accessAcademic') != NULL){
 			Careers::create(Session::get('accessAcademic'));
 		}
@@ -469,9 +463,6 @@ class AccessTypeController extends Controller {
 		if(Session::get('accessReserved') != NULL){
 			Reserved::create(Session::get('accessReserved'));
 		}
-
-		$form = FormInfo::find(Session::get('requestId'));
-		$form->update(['complete' => true]);
 		
 		Session::forget('requestId');
 		Session::forget('requestDescription');
