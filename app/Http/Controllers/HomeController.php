@@ -26,7 +26,7 @@ class HomeController extends Controller {
 		$this->middleware('auth');
 
 		//assert all tables can be created
-		assert( 'new App\About' == true );
+		assert( 'new About' == true );
 		assert( 'new App\AcademicCareers' == true );
 		assert( 'new App\Admissions' == true );
 		assert( 'new App\ChromePhp' == true );
@@ -37,11 +37,32 @@ class HomeController extends Controller {
 		assert( 'new App\StudentFinancialCashier' == true );
 		assert( 'new App\StudentRecords' == true );
 
-		/*assert all tables can be destroyed
+		//assert the about table restricts its data correctly
 		$example = new \App\About;
-		assert( $example->destroy() == true );
-		$example->destroy();
 
+		/* tests that should fail */
+
+		//assert( ( $example->userSSO = 'def83ls' ) == false );
+		assert( ( $example->userSSO = NULL ) == false );
+		assert( ( $example->userSSO = '' ) == false );
+		assert( ( $example->ferpaScore = NULL ) == false );
+
+		/* tests that should pass */
+
+		//userSSO field in about table
+		assert( ( $example->userSSO = 'jasdf' ) == 'jasdf' ); //initial value
+		assert( ( $example->userSSO = 'wul99s' ) == 'wul99s' ); //update
+
+		
+		//ferpaScore field in about table
+		assert( ( $example->ferpaScore = 99 ) == 99 ); //initial value
+		assert( ( $example->ferpaScore = -123) == -123 ); //update
+
+		//save the row data and delete it
+		assert( $example->save() == true );
+		assert( About::where( 'userSSO', 'wul99s' )->get()->delete() == true );
+
+		/*
 		$example = new \App\AcademicCareers;
 		assert( $example->destroy() == true );
 		$example->destroy();
