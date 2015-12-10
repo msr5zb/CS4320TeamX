@@ -423,7 +423,7 @@ class AccessTypeController extends Controller {
 		// Flip through the types array to see which are found in request, If found set that to be true
 		for ($i=0; $i < count($request['accessReserved']); $i++) {
 			if(in_array($request['accessReserved'][$i], $reservedType)) {
-				$TypeValues[$request['accessReserved'][$i]] = true;
+				$reservedTypeValues[$request['accessReserved'][$i]] = true;
 			}
 		}
 
