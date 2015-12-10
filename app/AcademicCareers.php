@@ -24,7 +24,7 @@ class AcademicCareers extends Model
         'ugrd',
     	'grad',
     	'med',
-    	'vetMed',
+    	'vet_med',
     	'law'
     ];
 }
