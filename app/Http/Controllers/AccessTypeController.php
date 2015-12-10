@@ -76,14 +76,14 @@ class AccessTypeController extends Controller {
 	public function storeAccAcad(Requests\SelectAcademicCareer $request) {
 
 		// Array of columns of table
-		$academicType = ['ugrd', 'grad', 'med', 'vetMed', 'law'];
+		$academicType = ['ugrd', 'grad', 'med', 'vet_med', 'law'];
 
 		// Give everyone a value 
 		$academicTypeValues = array('requestId' => Session::get('requestId'),
 									'ugrd' => false,
 									'grad' => false,
 									'med' => false, 
-									'vetMed' => false,
+									'vet_med' => false,
 									'law' => false);
 
 		// Flip through the types array to see which are found in request, If found set that to be true
@@ -103,6 +103,7 @@ class AccessTypeController extends Controller {
 			return redirect('cancel');
 		}
 		else {
+			//var_dump(Session::all());
 			return redirect('studentRecPrompt');
 		}
 	}
