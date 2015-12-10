@@ -17,7 +17,6 @@ class CreateRequestTable extends Migration
             $table->integer('requestId')->unsigned();
             $table->string('userSSO', 6);
             $table->string('requestDescription', 100);
-            $table->string('pathHash', 50)->nullable();
             $table->timestamps();
             $table->foreign('requestId')->references('requestId')->on('form_info');
             $table->foreign('userSSO')->references('userSSO')->on('users');
