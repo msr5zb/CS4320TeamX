@@ -17,7 +17,7 @@
       {!! Form::checkbox('selectCareer[]', 'med', false) !!} MED
     </div>
     <div class="col-md-2">
-      {!! Form::checkbox('selectCareer[]', 'vetmed', false) !!} VET MED
+      {!! Form::checkbox('selectCareer[]', 'vet_med', false) !!} VET MED
     </div>
     <div class="col-md-2">
       {!! Form::checkbox('selectCareer[]', 'law', false) !!} LAW

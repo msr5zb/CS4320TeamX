@@ -18,7 +18,7 @@ class CreateAcademicCareersTable extends Migration
             $table->boolean('ugrd')->default(0);
             $table->boolean('grad')->default(0);
             $table->boolean('med')->default(0);
-            $table->boolean('vetMed')->default(0);
+            $table->boolean('vet_med')->default(0);
             $table->boolean('law')->default(0);
             $table->foreign('requestId')->references('requestId')->on('request');
             $table->primary('requestId');

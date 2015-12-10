@@ -76,14 +76,14 @@ class AccessTypeController extends Controller {
 	public function storeAccAcad(Requests\SelectAcademicCareer $request) {
 
 		// Array of columns of table
-		$academicType = ['ugrd', 'grad', 'med', 'vetMed', 'law'];
+		$academicType = ['ugrd', 'grad', 'med', 'vet_med', 'law'];
 
 		// Give everyone a value 
 		$academicTypeValues = array('requestId' => Session::get('requestId'),
 									'ugrd' => false,
 									'grad' => false,
 									'med' => false, 
-									'vetMed' => false,
+									'vet_med' => false,
 									'law' => false);
 
 		// Flip through the types array to see which are found in request, If found set that to be true
@@ -103,6 +103,7 @@ class AccessTypeController extends Controller {
 			return redirect('cancel');
 		}
 		else {
+			//var_dump(Session::all());
 			return redirect('studentRecPrompt');
 		}
 	}
@@ -423,7 +424,7 @@ class AccessTypeController extends Controller {
 		// Flip through the types array to see which are found in request, If found set that to be true
 		for ($i=0; $i < count($request['accessReserved']); $i++) {
 			if(in_array($request['accessReserved'][$i], $reservedType)) {
-				$TypeValues[$request['accessReserved'][$i]] = true;
+				$reservedTypeValues[$request['accessReserved'][$i]] = true;
 			}
 		}
 
@@ -448,20 +449,38 @@ class AccessTypeController extends Controller {
 		if(Session::get('accessAcademic') != NULL){
 			Careers::create(Session::get('accessAcademic'));
 		}
+		else{
+			Careers::create(['requestId' => Session::get('requestId')]);
+		}
 		if(Session::get('accessRecords') != NULL){
 			Records::create(Session::get('accessRecords'));
+		}
+		else{
+			Records::create(['requestId' => Session::get('requestId')]);
 		}
 		if(Session::get('accessAdmissions') != NULL){
 			Admissions::create(Session::get('accessAdmissions'));
 		}
+		else{
+			Admissions::create(['requestId' => Session::get('requestId')]);
+		}
 		if(Session::get('accessSFaid') != NULL){
 			StudentFinancialAid::create(Session::get('accessSFaid'));
+		}
+		else{
+			StudentFinancialAid::create(['requestId' => Session::get('requestId')]);
 		}
 		if(Session::get('accessSFcashier') != NULL){
 			Cashier::create(Session::get('accessSFcashier'));
 		}
+		else{
+			Cashier::create(['requestId' => Session::get('requestId')]);
+		}
 		if(Session::get('accessReserved') != NULL){
 			Reserved::create(Session::get('accessReserved'));
+		}
+		else{
+			Reserved::create(['requestId' => Session::get('requestId')]);
 		}
 		
 		Session::forget('requestId');
