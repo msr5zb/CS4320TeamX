@@ -13,6 +13,7 @@
       <center>Acess Type</center>
     </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     Role
@@ -27,6 +28,7 @@
     <center>Update</center>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     SF General Inquiry
@@ -35,12 +37,12 @@
     For staff outside of the Cashiers Office
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('sfGen, 'view', false) !!}</center>
+    <center>{!! Form::checkbox('sfCash[]', 'generalinview', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <!-- <center>{!! Form::checkbox('fACash[]', 'update', false) !!}</center> -->
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-md-4">
     SF Cash Group Post
@@ -49,17 +51,27 @@
     Also known as "Cost Centers" (for areas that want to apply charges)
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('sfCash[]', 'view', false) !!}</center>
+    <center>{!! Form::checkbox('sfCash[]', 'cashgrpview', false) !!}</center>
   </div>
   <div class="col-md-2">
-    <center>{!! Form::checkbox('sfCash[]', 'update', false) !!}</center>
+    <center>{!! Form::checkbox('sfCash[]', 'cashgrpupdate', false) !!}</center>
   </div>
 </div>
+<br>
 <div class="row">
-  <div class="col-md-12">
-    {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}
+    <div class="col-md-10 col-md-offset-1">
+      {!! Form::Submit('Next', ['class' => 'btn btn-primary form-control']) !!}
+    </div>
   </div>
-</div>
+  <br>
+  <div class="row" >
+        <div class="col-md-5 col-md-offset-1"> 
+          <input type="submit" class="btn btn-success form-control" name="store" value="Save" >  
+        </div>
+        <div class="col-md-5"> 
+          <input type="submit" class="btn btn-danger form-control" name="store" value="Cancel" >  
+        </div>  
+  </div>
 {!! Form::close() !!}
 </div>
 

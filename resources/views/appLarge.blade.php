@@ -78,6 +78,10 @@
         <header class="bs-header">
             <div class="container group">
                       <!-- Column Left -->
+        <div class="floatLeft">
+            <img src="{{ asset('/images/tiger.png') }}" id="tigerPic" />
+        </div>
+
         <!-- Column Right -->
         <div class="floatLeft">
           <h1>AccessZou</h1><p class="lead">Just Zou it.</p>
@@ -92,7 +96,7 @@
 			<div class="col-lg-12 col-sm-9">
 		@endif
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2" >
+			<div class="col-lg-12 col-sm-9" >
 				<div class="panel panel-default" >
 					@yield('content')
 						@if ( $errors->any() )

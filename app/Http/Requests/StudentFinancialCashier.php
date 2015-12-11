@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class Admissions extends Request {
+class StudentFinancialCashier extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -21,15 +21,9 @@ class Admissions extends Request {
 	 */
 	public function rules()
 	{
-		$in = Request::input('store');
-		if($in == 'Cancel'|| $in == 'Save'){
-			return [];
-		}
-		else {
-			return [
-				'admissionsAccess' => 'required'
-			];
-		}
+		return [
+			//
+		];
 	}
 
 }

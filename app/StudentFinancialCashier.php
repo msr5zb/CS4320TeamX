@@ -20,6 +20,7 @@ class StudentFinancialCashier extends Model
 
     //allow mass assignment for the following attributes
     protected $fillable = [
+	    'requestId',
 	    'generalInquiryView',
 		'cashGroupPostView',
 		'cashGroupPostUpdate'
