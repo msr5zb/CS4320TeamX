@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('lname', 25);
             $table->string('title', 25);
             $table->string('address', 40);
-			//$table->boolean('admin')->default(FALSE);
+			$table->string('department', 20);
+            $table->string('phoneNum', 15);
             $table->integer('employeeId');
             $table->string('password', 60);
             $table->rememberToken();

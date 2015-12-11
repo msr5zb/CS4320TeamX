@@ -13,7 +13,8 @@ class UserTableSeeder extends Seeder {
           'lname' => 'Rios',
           'title' => 'Cheif Database Bro',
           'address' => '303 Foxfire Drive',
-		  //'admin' => TRUE,
+          'department' => 'Computer Science',
+          'phoneNum' => '(314)-812-9182',
           'employeeId' => 124123,
           'password' => bcrypt("password"),
         ] );
@@ -24,6 +25,8 @@ class UserTableSeeder extends Seeder {
           'lname' => 'Hryszko',
           'title' => 'Ms.',
           'address' => '98 East Avenue',
+          'department' => 'Computer Science',
+          'phoneNum' => '(314)-812-9182',
           'employeeId' => 282828,
           'password' => bcrypt("password"),
         ] );
@@ -34,7 +37,8 @@ class UserTableSeeder extends Seeder {
           'lname' => 'Wikey',
           'title' => 'What?',
           'address' => '123 Columbia Street',
-		  //'admin' => TRUE,
+          'department' => 'Computer Science',
+          'phoneNum' => '(314)-812-9182',
           'employeeId' => 234252,
           'password' => bcrypt("password"),
         ] );
@@ -45,6 +49,8 @@ class UserTableSeeder extends Seeder {
           'lname' => 'Minerd',
           'title' => 'Slacker',
           'address' => '763 Road',
+          'department' => 'Computer Science',
+          'phoneNum' => '(314)-812-9182',
           'employeeId' => 827423,
           'password' => bcrypt("password"),
         ] );
@@ -55,7 +61,8 @@ class UserTableSeeder extends Seeder {
           'lname' => 'Rallo',
           'title' => 'Hacker',
           'address' => '762 Road',
-		  //'admin' => TRUE,
+          'department' => 'Computer Science',
+          'phoneNum' => '(314)-812-9182',
           'employeeId' => 827371,
           'password' => bcrypt("password"),
         ] );
@@ -66,6 +73,8 @@ class UserTableSeeder extends Seeder {
           'lname' => 'I Cant Spell It',
           'title' => 'Head Programmer of Stuff',
           'address' => '761 Road',
+          'department' => 'Computer Science',
+          'phoneNum' => '(314)-812-9182',
           'employeeId' => 918242,
           'password' => bcrypt("password"),
         ] );
