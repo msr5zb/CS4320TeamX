@@ -229,8 +229,8 @@ class HomeController extends Controller {
 			assert( ( $example->med = true ) == true ); //update
 
 			//vetMed field in academicCareers table
-			assert( ( $example->vetMed = true ) == true ); //initial value
-			assert( ( $example->vetMed = false ) == false ); //update
+			assert( ( $example->vet_med = true ) == true ); //initial value
+			assert( ( $example->vet_med = false ) == false ); //update
 
 			//law field in acadmicCareers table
 			assert( ( $example->law = true ) == true );
