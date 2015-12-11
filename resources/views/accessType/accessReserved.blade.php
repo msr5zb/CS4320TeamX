@@ -23,7 +23,7 @@
       Immunization View
     </div>
     <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'immunizationView', false) !!}</center></div>
-    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'immunizationUpate', false) !!}</center></div>
+    <div class="col-md-2"><center>{!! Form::checkbox('accessReserved[]', 'immunizationUpdate', false) !!}</center></div>
   </div>
   <hr>
   <div class="row">
