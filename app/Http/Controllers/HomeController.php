@@ -85,6 +85,10 @@ class HomeController extends Controller {
 			assert( ( $example->lname = 'Sentry' ) == 'Sentry' );
 			assert( ( $example->lname = 'Luck' ) == 'Luck' );
 
+			assert( ( $example->phoneNumber = '1234567890' ) == '1234567890' );
+			assert( ( $example->department = 'Computer Science' ) == 'Computer Science' );
+			
+
 			assert( ( $example->title = 'Mr.' ) == 'Mr.' );
 			assert( ( $example->title = 'Dr.' ) == 'Dr.' );
 
