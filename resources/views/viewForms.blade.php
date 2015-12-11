@@ -17,6 +17,7 @@
         
         @if (count($requests)) 
             <h3>You Currently Have {{(count($requests))}}  Form Requests.</h3>
+            <?php $formCounter = 1; ?>
               <div class="dropdown">
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Please Select A Form!
                   <span class="caret"></span></button>
@@ -31,13 +32,15 @@
                         '{{$request->title}}',
                         '{{$request->employeeId}}',
                         '{{$request->address}}',
+                        '{{$request->department}}',
+                        '{{$request->phoneNum}}',
                         '{{$request->requestDescription}}',
                         '{{$request->ferpaScore}}',
                         
                         '{{$request->ugrd}}',
                         '{{$request->grad}}',
                         '{{$request->med}}',
-                        '{{$request->vetMed}}',
+                        '{{$request->vet_med}}',
                         '{{$request->law}}',
                         
                         '{{$request->basicInquiryView}}',
@@ -105,7 +108,7 @@
                         
                         
                         
-                        )">Security Form {{$request->requestId}}</a></li>
+                        )">Security Form <?php print($formCounter++); ?></a></li>
                     @endforeach   
                   </ul>
 

@@ -12,11 +12,11 @@
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="{{ asset('/libs/jspdf.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/libs/html2canvas.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/libs/addimage.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/libs/jquery-1.11.2.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/libs/jspdf.debug.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jspdf.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/html2canvas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/addimage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jquery-1.11.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jspdf.debug.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/pdfHandler.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/previewpdfHandler.js') }}"></script>
 

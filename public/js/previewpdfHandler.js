@@ -6,13 +6,15 @@
         $title,
         $employeeId,
         $address,
+        $department,
+        $phoneNum,
         $requestDescription,
         $ferpaScore,
         
         $ugrd,
         $grad,
         $med,
-        $vetMed,
+        $vet_med,
         $law,
             
         $basicInquiryView,
@@ -86,7 +88,7 @@
                 careers = careers.concat('GRAD ');
             if($med == '1')
                 careers = careers.concat('MED ');
-            if($vetMed == '1')
+            if($vet_med == '1')
                 careers = careers.concat('VET-MED ');
             if($law == '1')
                 careers = careers.concat('LAW ');
@@ -165,8 +167,9 @@
             + $title 
             + '</div>'
             + '<div class="form-group">'
-            + '<label for="dept">* Department:</label>'
-            + 'Computer Science'
+            + '<label for="dept">* Department:'
+            + $department
+            + '</label>'
             + '</div>'
             + '<div class="form-group">'
             + '<label for="empID">* Employee ID:</label>'
@@ -177,8 +180,9 @@
             + $address 
             + '</div>'
             + '<div class="form-inline">'
-            + '<label for="phnum">* Phone Number:</label>'
-            + '3149733117'
+            + '<label for="phnum">* Phone Number:'
+            + $phoneNum
+            + '</label>'
             + '</div>'
             + '</form>'
             + '</div>'
