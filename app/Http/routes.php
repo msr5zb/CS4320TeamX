@@ -61,6 +61,11 @@ Route::get('cancel', 'AccessTypeController@cancel');
 Route::get('viewForms',['middleware' => 'auth', 'uses'=> 'ViewFormsController@index']);
 Route::post('viewForms','ViewFormsController@viewRequest');
 
+Route::get('pdf', 'PDFController@index' );
+
+//catch all other routes and redirect correctl
+Route::get( '{x}', 'HomeController@index' );
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
