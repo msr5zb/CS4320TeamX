@@ -85,6 +85,10 @@ class HomeController extends Controller {
 			assert( ( $example->lname = 'Sentry' ) == 'Sentry' );
 			assert( ( $example->lname = 'Luck' ) == 'Luck' );
 
+			assert( ( $example->phoneNum = '1234567890' ) == '1234567890' );
+			assert( ( $example->department = 'Computer Science' ) == 'Computer Science' );
+			
+
 			assert( ( $example->title = 'Mr.' ) == 'Mr.' );
 			assert( ( $example->title = 'Dr.' ) == 'Dr.' );
 
@@ -225,8 +229,8 @@ class HomeController extends Controller {
 			assert( ( $example->med = true ) == true ); //update
 
 			//vetMed field in academicCareers table
-			assert( ( $example->vetMed = true ) == true ); //initial value
-			assert( ( $example->vetMed = false ) == false ); //update
+			assert( ( $example->vet_med = true ) == true ); //initial value
+			assert( ( $example->vet_med = false ) == false ); //update
 
 			//law field in acadmicCareers table
 			assert( ( $example->law = true ) == true );
